@@ -1,0 +1,40 @@
+{% extends './include/layout.html' %}
+
+{% block title %}Achain 区块链浏览器{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="./scss/wallet.scss">
+{% endblock %}
+
+{% block content %}
+{% include "./include/nav/nav.html" with {page: "wallet"}%}
+<router-view :class="window.app.LANG">
+    <div class="layout-loading" style="background-color: inherit;">
+        <div class="m-loading">
+            <div class="rect rect1"></div>
+            <div class="rect rect2"></div>
+            <div class="rect rect3"></div>
+            <div class="rect rect4"></div>
+            <div class="rect rect5"></div>
+        </div>
+    </div>
+</router-view>
+{% endblock %}
+
+{% block footer %}
+{% include "./include/footer/footer.html" %}
+{% endblock %}
+
+{% block script %}
+<div style="display: none">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261415310'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261415310' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+<script src="./dep/bignumber.3.0.1.js"></script>
+<script src="./dep/act-jsapi.min.js"></script>
+<script src="./dep/base64.js"></script>
+<script src="./dep/qrcode.js"></script>
+<script src="./js/wallet.js"></script>
+{% endblock %}
+
+
+return void("init" == e ? "page404" == t ? (initGlobeError(t), addRemoveListeners(!0), animateGlobeError()) : (animation_type = Math.floor(2 * Math.random() + 0), 0 == animation_type ? (initWave(t), addRemoveListeners(!0), animateWave()) : 1 == animation_type && (initGlobe(t), addRemoveListeners(!0), animateGlobe())) : "kill" == e ? "page404" == t ? (stopAnimationGlobeError(animation_id), killAnimationGlobeError(), addRemoveListeners(!1)) : 0 == animation_type ? (stopAnimationWave(animation_id), killAnimationWave(), addRemoveListeners(!1)) : 1 == animation_type && (stopAnimationGlobe(animation_id), killAnimationGlobe(), addRemoveListeners(!1)) : "play" == e ? "page404" == t ? (addRemoveListeners(!0), animateGlobeError()) : 0 == animation_type ? (addRemoveListeners(!0), animateWave()) : 1 == animation_type && (addRemoveListeners(!0), animateGlobe()) : "stop" == e && ("page404" == t ? (addRemoveListeners(!1), stopAnimationGlobeError(animation_id)) : 0 == animation_type ? (addRemoveListeners(!1), stopAnimationWave(animation_id)) : 1 == animation_type && (addRemoveListeners(!1), stopAnimationGlobe(animation_id))))

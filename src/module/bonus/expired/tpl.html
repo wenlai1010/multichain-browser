@@ -1,0 +1,12 @@
+<div class="bonus-expired">
+    <p class="bonus-env-top"><span v-text="$t('expireTxt')">Activity is ending</span></p>
+    <div class="result-area"><img src="../img/tmz.png" alt=""></div>
+    <p class="bonus-env-bottom"></p>
+
+    <div class="bottom-links">
+        <p><a href="javascript:;" @click="isShowDetail=!0" v-text="$t('getDetail')"></a></p>
+    </div>
+
+    <Detail :show-detail="isShowDetail" @hideDetail="isShowDetail=!1"></Detail>
+    
+</div>

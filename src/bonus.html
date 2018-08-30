@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <title>Achain Smart Contract: Lucky Package</title>
+    
+    <link rel="stylesheet" href="./css/bonus.css">
+    <script> (function () {
+        function addWebp() {
+            var htmlClass = document.documentElement.className;
+            if (htmlClass) {
+                document.documentElement.className += ' webp';
+            } else {
+                document.documentElement.className = "webp";
+            }
+        }
+
+        function detect() {
+            var WebP = new Image();
+            WebP.onload = WebP.onerror = function () {
+                if (WebP.height != 2) {
+                    window.localStorage.setItem('webp', 0);
+                } else {
+                    window.localStorage.setItem('webp', 1);
+                }
+            };
+            WebP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+        }
+
+        if (typeof window.localStorage !== 'undefined') {
+            if (window.localStorage.getItem('webp') === '1') {
+                addWebp();
+            } else {
+                detect();
+            }
+        }
+
+        var initFontSize = function () {
+            var _viewportWidth
+            var lock = false
+            var _htmlNode = document.getElementsByTagName('html')[0]
+            var _scrollWidth = window.innerWidth||screen.availWidth || document.documentElement.scrollWidth
+            var _scrollHeight = (screen.height > 0) ? (window.innerHeight >= screen.height || window.innerHeight == 0) ? screen.height : window.innerHeight : window.innerHeight
+
+
+            var maxWidth = 750;
+
+            _viewportWidth = _scrollHeight > _scrollWidth ? _scrollWidth : _scrollHeight
+            _htmlNode.style.fontSize = '100px';
+            if (_viewportWidth < 150 || _viewportWidth > 640) {
+                setTimeout(function () {
+                    !lock && initFontSize()
+                    lock = true
+                }, 200)
+            } else {
+                _htmlNode.style.fontSize = _viewportWidth / maxWidth * 100 + 'px'
+            }
+        }
+        initFontSize();
+    })(); </script>
+</head>
+<body>
+
+<div id="app">
+    <transition name="router-fade">
+        <router-view :class="window.app.LANG" class="child-view">
+    </transition>
+</router-view>
+</div>
+
+<script src="./dep/jquery.3.1.1.min.js"></script>
+<script src="./dep/vue.2.4.4.js"></script>
+<script src="./dep/vue-router.2.7.0.min.js"></script>
+<script src="./js/bonus.js"></script>
+</body>
+</html> 

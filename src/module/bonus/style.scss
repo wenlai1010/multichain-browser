@@ -1,0 +1,176 @@
+
+.fixed-bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 1000;
+  background: rgba(0,0,0,.6);
+}
+
+.bonus-env-bottom {
+  margin: -1px .32rem 0;
+  background: #da402d;
+  border-radius: 0 0 .2rem .2rem;
+  box-shadow: 0 .1rem .1rem rgba(0,0,0,.5);
+  height: 1.28rem;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: -.32rem;
+    bottom: -.5rem;
+    width: 1.29rem;
+    height: 0.77rem;
+    background: url(../img/lcoin.png) no-repeat center;
+    background-size: contain !important;
+    z-index: 10;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: -.32rem;
+    bottom: -.9rem;
+    width: 2.5rem;
+    height: 1.61rem;
+    background: url(../img/rcoin.png) no-repeat center;
+    background-size: contain !important;
+    z-index: 10;
+  }
+}
+
+.bottom-links {
+  padding: .72rem .6rem;
+  background: #ffe4cc;
+  a {
+    font-size: .26rem;
+    color: #da402d;
+    text-decoration: none;
+  }
+  p {
+    text-align: center;
+  }
+  .getDetail {
+    float: left;
+  }
+  .getActAddr {
+    float: right;
+  }
+}
+
+.bonus-index {
+  padding-top: 2.32rem;
+  .bonus-env-top {
+    margin: 0 .32rem;
+    height: 2.8rem;
+    background: #f64a36 url(../img/hb2.png) no-repeat bottom center;
+    background-size: contain !important;
+    border-radius: .2rem .2rem 0 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .address-area {
+    background-color: #da402d;
+    margin: -1px .32rem 0;
+    padding-top: .3rem;
+    position: relative;
+    box-shadow: 0 1rem .1rem rgba(0,0,0,.5);
+  }
+
+  .address-tip {
+    font-size: .22rem;
+    color: #fff;
+    text-align: center;
+  }
+
+  .address-input {
+    margin: .3rem .66rem .4rem;
+    input {
+      width: 100%;
+      border-radius: .08rem;
+      outline: 0;
+      border: 0;
+    }
+  }
+
+  .address-btn {
+    margin: 0 .66rem;
+    button {
+      font-size: .32rem;
+      width: 100%;
+      border-radius: .08rem;
+      color: #fff;
+      line-height: .88rem;
+      background-color: #ffb800;
+      border: 0;
+      outline: 0;
+      box-shadow: 0 .1rem #d99d00;
+    }
+  }
+
+  .bonus-users {
+    font-size: .24rem;
+    margin-top: .64rem;
+    text-align: center;
+    height: .4rem;
+    overflow: hidden;
+    ul {
+      position: relative;
+      transition: top .5s;
+    }
+    li {
+      line-height: .4rem;
+    }
+    span {
+      display: inline-block;
+      margin-left: .2rem;
+      color: rgba(0,0,0,.6);
+      &:first-child {
+        margin: 0;
+      }
+    }
+  }
+
+
+  .countdown {
+    
+    .timer {
+      position: absolute;
+      top: 50%;
+      margin-top:-1.5rem;
+      font-size: 1rem;
+      line-height: 3rem;
+      color: #fff;
+      text-align: center;
+      width: 100%;
+      left: 0;
+    }
+
+  } 
+
+  .bonus-lang {
+    position: absolute;
+    top: .36rem;
+    right: .34rem;
+    width: 0.72rem;
+    height: 0.72rem;
+    border-radius: 50%;
+    background: rgba(0,0,0,.36);
+    line-height: .72rem;
+    text-align: center;
+    color: #fff;
+    font-size: .26rem;
+  }
+
+ 
+
+}
+
+@import "result/style";
+@import "expired/style";
+
+

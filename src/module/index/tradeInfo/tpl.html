@@ -1,0 +1,106 @@
+    <div class="comp-block cont-center">
+        <div class="layout-index">
+            <div class="comp-block">
+                <div class="block-id">
+                    {{ $tc('transac') }}(ID)：<span>{{tradeId}}</span>
+                </div>
+                <div class="m-block-content">
+                    <div class="m-review" v-if="isLoading">
+                        <loading></loading>
+                    </div>
+                    <div class="m-review" v-else>
+                        <div class="review-cont">
+                            <div class="review-cont-left" style="width: 540px">
+                                <div class="cont-item">
+                                    <span class="item-title">{{ $t('transacInitiator') }}:</span>
+                                    <a class="item-info" @click="searchResult(trade.from_addr,trade.from_acct)" v-if="trade.from_acct">{{trade.from_acct}}</a>
+                                    <a class="item-info" @click="searchResult(trade.from_addr,'')" v-else>{{trade.from_addr}}</a>
+                                </div>
+                                <div class="cont-item">
+                                    <span class="item-title">{{ $t('transacType') }}: </span>
+                                    <span class="item-info">{{trade.trx_type}}</span></div>
+                                <div class="cont-item"  v-if="trade.contract_id">
+                                    <span class="item-title">{{ $tc('contract', 1) }}ID: </span>
+                                    <a class="item-info" @click="searchResult(trade.contract_id,'')">{{trade.contract_id}}</a></div>
+                                <div class="cont-item">
+                                    <span class="item-title">{{ $t('blockCommission') }}: </span>
+                                    <span class="item-info">{{trade.fee}} SSC</span></div>
+                                <div class="cont-item">
+                                    <span class="item-title">{{ $t('confirmTime') }}:  </span>
+                                    <span class="item-info">{{trade.trx_time|locale-time}}</span></div>
+                                <div class="cont-item"  v-if="trade.called_abi">
+                                    <span class="item-title">{{ $t('contractFunc') }}:  </span>
+                                    <span class="item-info">{{trade.called_abi}}</span></div>
+                                <div class="cont-item"  v-if="trade.event_type">
+                                        <span class="item-title">{{ $t('eventType') }}:  </span>
+                                        <span class="item-info">{{trade.event_type}}</span></div>
+                            </div>
+                            <div class="review-cont-right" style="width: 540px">
+                                <div class="cont-item">
+                                    <span class="item-title ">{{ $t('transacRecipient') }}: </span>
+                                    <a class="item-info" @click="searchResult(trade.to_addr,trade.to_acct)" v-if="trade.to_acct">{{trade.to_acct}}</a>
+                                    <a class="item-info" @click="searchResult(trade.to_addr,'')" v-else-if="trade.to_addr">{{trade.to_addr}}</a>
+                                    <a class="item-info" @click="searchResult(trade.contract_id,'')" v-else>{{trade.contract_id}}</a>
+                                </div>
+                                <div class="cont-item">
+                                    <span class="item-title">{{ $t('transacAmount') }}: </span>
+                                    <span class="item-info">{{trade.coin_type ? +trade.amount + ' ' + trade.coin_type : '--'}}</span></div>
+                                <div class="cont-item"  v-if="trade.event_type">
+                                    <span class="item-title">{{ $t('transacResult') }}:  </span>
+                                    <span class="item-info">{{ trade.transResult }}</span></div>
+                                <div class="cont-item">
+                                    <span class="item-title ">{{ $t('blockHeight') }}: </span>
+                                    <a class="item-info" @click="toBlockInfo(trade.block_num)">{{trade.block_num}}</a></div>
+                                <div class="cont-item">
+                                    <span class="item-title">{{ $t('transacNote') }}: </span>
+                                    <span class="item-info">{{trade.memo}}</span></div>
+                                <div class="cont-item" v-if="trade.abi_params">
+                                    <span class="item-title" >{{ $t('contractParam') }}: </span>
+                                    <div class="item-info overflow" style="width: 400px;word-wrap: break-word">{{trade.abi_params}}</div></div>
+                                <div class="cont-item" v-if="trade.event_params">
+                                            <span class="item-title" >{{ $t('eventParams') }}: </span>
+                                            <div class="item-info overflow" style="width: 400px;word-wrap: break-word">{{trade.event_params}}</div></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="m-arr-tab" v-if="extTrades&&extTrades.totalRecords">
+                        <div class="tab_title" style="margin-bottom: 16px; font-size: 18px;">{{ $t('extTrade') }}</div>
+                        
+                        <div class="m-table">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>{{ $t('transacInitiator') }}</th>
+                                    <th>{{ $t('transacRecipient') }}</th>
+                                    <th>{{ $t('transacAmount') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="trade in extTrades.actTransactionExList">
+                                    <!-- <td>
+                                        <a :href="'./index.html#/searchResult?fromAcct='+contractItem.to_acct+'&acctAddress='+contractItem.to_addr" class=" v-if="contractItem.to_acct">{{contractItem.to_acct}}</a>
+                                        <a :href="'./index.html#/searchResult?fromAddress='+contractItem.to_addr" class=" v-else="">{{contractItem.to_addr}}</a>
+                                    </td> -->
+                                    <td><a class="item-info" @click="searchResult(trade.fromAddr,'')">{{trade.fromAddr}}</a></td>
+                                    <td><a class="item-info" @click="searchResult(trade.toAddr,'')">{{trade.toAddr}}</a></td>
+                                    <td>{{trade.amount}} SSC</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <pager :page-size="extended.pageSize"
+                            :page-num="pageNum"
+                            :on-page-change="changePage"
+                            :page-no="extended.pageNo"></pager>
+                            <!-- <loading v-if="isLoading"></loading> -->
+                            <!-- <no-data v-if="isLoading === false && contractList && contractList.length === 0"></no-data> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

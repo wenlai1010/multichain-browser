@@ -1,0 +1,38 @@
+<div class="bonus-index">
+    <p class="bonus-env-top"></p>
+    <div class="address-area">
+        <p class="address-tip">{{$t('grabTip')}}</p>
+        <p class="address-input"><input type="text" v-model="address"></p>
+        <p class="address-btn"><button @click="getBonus">{{$t('grabBtn')}}</button></p>
+        <div class="bonus-users">
+            <ul :style="'top: -' + currUser % userList.length * .4 + 'rem'">
+                <li v-for="user in userList">
+                    <span class="time">{{user.time | timeFormat($i18n)}}</span>
+                    <span class="address">{{user.actAddress | shorten}}</span>
+                    <span class="amount">{{$t('obtain')}} {{user.actAmount}}SSC</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p class="bonus-env-bottom"></p>
+
+    <div class="bottom-links">
+        <p class="getActAddr"><a href="https://www.pgyer.com/Kcash" v-text="$t('getAddress')"></a></p>
+        <p class="getDetail"><a href="javascript:;" @click="isShowDetail=!0" v-text="$t('getDetail')"></a></p>
+    </div>
+
+    <Detail :show-detail="isShowDetail" @hideDetail="isShowDetail=!1"></Detail>
+
+    <div class="countdown fixed-bg" v-show="counting">
+        <!-- <div class="circle">
+            <p class="clipped"></p>
+            <p class="fixede"></p>
+        </div> -->
+        <p class="timer" v-text="timer"></p>
+    </div>
+
+    <b class="bonus-lang" v-show="$i18n.locale=='zh'" @click="($i18n.locale='en')&&localStorage.setItem('lang', 'en')">EN</b>
+    <b class="bonus-lang" v-show="$i18n.locale=='en'" @click="($i18n.locale='zh')&&localStorage.setItem('lang', 'zh')">中</b>
+    <Tip :content="tipText" :show-flag="isShowTip" @hidetips="isShowTip=!1"></Tip>
+    
+</div>

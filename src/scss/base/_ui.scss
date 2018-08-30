@@ -1,0 +1,123 @@
+/**
+ * @file
+ * @auth jinguangguo
+ * @date 2016/10/17
+ */
+
+.ui-title {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+.ui-btn {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 15px;
+    min-width: 64px;
+    height: 32px;
+    line-height: 32px;
+    background-color: rgba(255,255,255,.8);
+    border: 1px solid $color-a-link;
+    border-radius: 16px;
+    color: $color-a-link;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+        transition: all 200ms;
+        background-color: $color-a-link;
+        color: #fff;
+    }
+    &:active {
+        background-color: $color-a-link;
+        color: #fff;
+    }
+    &--block {
+        display: block;
+        width: 100%;
+    }
+    &--small {
+        height: 24px;
+        line-height: 24px;
+    }
+    &--default {
+        background-color: #fff;
+        color: $color-font;
+        border: 1px solid #ccc;
+        &:hover {
+            background-color: #fafafb;
+            color: $color-font;
+            border: 1px solid $color-border-hover;
+        }
+        &:active {
+            background-color: #fafafb;
+            color: #fff;
+            border: 1px solid $color-border-hover;
+        }
+    }
+
+    &--gray {
+        background-color: #f6f6f6;
+        color: $color-font-light;
+        border: 1px solid #ccc;
+        &:hover {
+            background-color: #fafafb;
+            color: $color-font-light;
+            border: 1px solid $color-border-hover;
+        }
+        &:active {
+            background-color: #fafafb;
+            color: $color-font;
+            border: 1px solid $color-link;
+        }
+    }
+
+    &--dashed {
+        background-color: #fff;
+        color: $color-font;
+        border: 1px dashed #ccc;
+        &:hover {
+            background-color: #fafafb;
+            color: $color-font;
+            border: 1px dashed $color-border-hover;
+        }
+        &:active {
+            background-color: #fafafb;
+            color: $color-font;
+            border: 1px dashed $color-link;
+        }
+    }
+    &[disabled] {
+        pointer-events: none;
+        box-shadow: none;
+        opacity: .65;
+    }
+}
+
+.ui-tip {
+    min-height: 16px;
+    font-size: 12px;
+    line-height: 16px;
+    white-space: nowrap;
+    .text {
+        color: $color-font-gray;
+    }
+    .error {
+        color: #f9504b;
+    }
+    a {
+        @include link;
+    }
+}
+
+.ui-loading {
+    text-align: center;
+    padding: 10px 0;
+    .text {
+        color: $color-font-gray;
+    }
+}

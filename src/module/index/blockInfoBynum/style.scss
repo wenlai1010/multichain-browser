@@ -1,0 +1,19 @@
+
+.comp-block {
+    .block-select {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 50px 36px;
+      font-size: 16px;
+      >.ui-btn {
+        width: 120px;
+      }
+    }
+
+    &.en .item-title{
+      width: auto !important;
+      margin-right: 1em;
+    }
+    
+}
+

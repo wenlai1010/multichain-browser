@@ -1,0 +1,43 @@
+/**
+ * @file
+ * @auth
+ * @date 2016/10/18
+ */
+
+.layout-footer {
+    background: #000;
+    height: 420px;
+    text-align: center;
+    color: #fff;
+    &-link{
+        padding-top: 106px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items:center;
+        &-item{
+            &>i{
+                display: block;
+                width: 140px;
+                height: 140px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                margin: 0 auto;
+            }
+            &-pic1{
+                background-image: url('../img/selfsell-share.png');
+            }
+            &-pic2{
+                background-image: url('../img/selfsell-share.png');
+            }
+            &>p{
+                margin-top: 12px;
+                font-size: 16px;
+            }
+            &.first{
+                 margin-right: 128px;
+            }
+
+        }
+    }
+}

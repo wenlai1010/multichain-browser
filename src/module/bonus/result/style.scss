@@ -1,0 +1,40 @@
+
+.bonus-result {
+  .bonus-env-top {
+    margin: 0 .32rem;
+    height: 6rem;
+    background:  url(../img/hb1.png) no-repeat bottom center;
+    background-size: contain !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  .result-area {
+    text-align: center;
+    background-color: #da402d;
+    margin: 0 .32rem;
+    padding: .4rem 0;
+    box-shadow: 0 0 1rem rgba(0,0,0,.5);
+
+    p:first-child {
+      font-size: .28rem;
+      margin-bottom: .4rem;
+      color: rgba(0,0,0,.6);
+    }
+    h1 {
+      font-size: .74rem;
+      color: #fff;
+      margin-bottom: .6rem;
+      small { font-size: .28rem }
+    } 
+    .address-link {
+      a { color: #ffb800 }
+      font-size: .26rem;
+    }
+  }
+
+
+}
+
+
+

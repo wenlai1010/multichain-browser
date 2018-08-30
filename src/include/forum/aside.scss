@@ -1,0 +1,23 @@
+.forum-aside {
+    width: 160px;
+    .none { display: none }
+    ul {
+        padding: 40px 0 100px;
+        li span {
+           display: block;
+           line-height: 48px;
+           font-size: 16px;
+           text-align: center; 
+           background-color: #ddd;
+           color: #555;
+        }
+        li a {
+            display: block;
+            line-height: 48px;
+            font-size: 16px;
+            text-align: center;
+            color: #555;
+            text-decoration: none;
+        }
+    }
+}

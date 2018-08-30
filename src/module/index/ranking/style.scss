@@ -1,0 +1,22 @@
+.module-ranking{
+    .m-block-content{
+        margin: 0;
+        padding: 0;
+    }
+    .ranking-from{
+            cursor: pointer;
+    }
+    .ranking-from:hover{
+      text-decoration:underline;
+    }
+    &-list{
+      margin-bottom: 20px;
+      >span{
+        display: inline-block;
+        color: #333;
+        line-height: 32px;
+        font-size: 15px;
+        margin-right: 12px;
+      }
+    }
+}

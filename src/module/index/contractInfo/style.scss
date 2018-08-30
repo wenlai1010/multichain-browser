@@ -1,0 +1,90 @@
+/**
+ * @file
+ * @auth donglele
+ * @date 2017/2/15
+ */
+.contract-cont{
+  width: $layout-width;
+  margin: 0 auto;
+  padding-top: 50px;
+  %commonTitle{
+    margin-bottom: 20px;
+    line-height: 20px;
+    font-size: 20px;
+  }
+  .contract-addr{
+   @extend %commonTitle;
+    span{
+      display: inline-block;
+      margin-left: 15px;
+    }
+  }
+  &-inner{
+    width: 100%;
+    padding: 40px 60px 60px;
+    margin-bottom: 80px;
+    background: #fff;
+    h2{
+      @extend %commonTitle;
+    }
+
+    .contract-overview{
+      position: relative;
+      margin-bottom: 45px;
+      ul{
+        padding-top: 25px;
+        border-top: 1px solid #e8e8e8;
+        line-height: 44px;
+        li{
+          >b{
+            position: absolute;
+            width: 125px;
+            font-weight: normal;
+          }
+          >span{
+            display: inline-block;
+            padding-left: 125px;
+          }
+        }
+      }
+      .function_events{
+        position: absolute;
+        top: 85px;
+        right: 90px;
+        >dl{
+          float: left;
+          &:last-child{
+            margin-left: 90px;
+          }
+          dt{
+            margin-bottom: 20px;
+          }
+          dd{
+            width: 180px;
+            height: 210px;
+            line-height: 32px;
+            padding: 10px 20px;
+            border: 1px solid #d9d9d9;
+            overflow: auto;
+            span{
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.en .contract-overview {
+    font-size: 13px;
+    ul li {
+      > b{
+        width: auto !important;
+        position: static;
+      }
+      > span {
+        padding-left: 0 !important;
+      }
+    }
+  }
+}

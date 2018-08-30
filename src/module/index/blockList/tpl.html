@@ -1,0 +1,36 @@
+<div class="module-blockList cont-center">
+    <div>
+        <h1 class="blockList-title title-list"><img class="icon" src="../img/block_icon.png" alt="">{{ $tc("block",2) }}：</h1>
+        <div class="m-table">
+            <loading v-if="isLoading"></loading>
+            <table class="table-cont" v-if="!isLoading && blockList.length">
+                <thead>
+                    <tr>
+                        <th>{{ $t("blockHeight") }}</th>
+                        <th>{{ $t("generateTime") }}</th>
+                        <th>{{ $t("transacNum") }}</th>
+                        <!-- <th>{{ $t("transacAmount") }}（SSC）</th> -->
+                        <th>{{ $t("blockAgent") }}</th>
+                        <th>{{ $t("blockSize") }}（Bytes）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in blockList">
+                    <td width="200" class="gray-id">
+                        <a @click="toBlockInfo(item.block_num)">{{item.block_num}}</a></td>
+                    <td width="200" class="gray-data">{{item.block_time|locale-time}}</td>
+                    <td width="200">{{item.trans_num}}</td>
+                    <!-- <td width="260">{{+item.trans_amount}}</td> -->
+                    <td width="200" class="gray-agent">
+                        <a @click="toBlockAgent(item.signee)">{{item.signee}}</a></td>
+                    <td width="160">{{item.block_size}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <pager :page-size="condition.pageSize"
+               :on-page-change="changePage"
+               :page-num="pageNum"
+               :page-no="+condition.pageNo" v-if="!isLoading"></pager>
+    </div>
+</div>

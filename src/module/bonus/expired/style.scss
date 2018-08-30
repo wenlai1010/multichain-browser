@@ -1,0 +1,35 @@
+
+.bonus-expired {
+  padding-top: 2.32rem;
+
+  .bonus-env-top {
+    margin: 0 .32rem;
+    height: 4rem;
+    background:  url(../img/hb3.png) no-repeat bottom center;
+    background-size: contain !important;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    span {
+      line-height: 8;
+      color: #969696;
+      font-size: .36rem;
+    }
+  }
+
+  .result-area {
+    margin: 0 .32rem;
+    text-align: center;
+    background-color: #da402d;
+    padding: 1rem 0;
+    box-shadow: 0 0 1rem rgba(0,0,0,.5);
+    img {
+      width: 50%;
+    }
+  }
+
+
+}
+
+
+

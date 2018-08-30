@@ -1,0 +1,16 @@
+/**
+ * @file
+ * @auth jinguangguo
+ * @date 2017/1/9
+ */
+
+.animate-modal-enter-active, .animate-modal-leave-active {
+    $time: .4s;
+    -webkit-transition: all $time;
+    -moz-transition: all $time;
+    transition: opacity $time;
+}
+
+.animate-modal-enter, .animate-modal-leave-active {
+    opacity: 0;
+}

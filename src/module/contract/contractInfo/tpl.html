@@ -1,0 +1,56 @@
+<div class="contract-cont">
+    <h1 class="contract-addr">{{ $tc('contract', 1) }} ID:<span>{{info.addr}}</span></h1>
+    <div class="contract-cont-inner">
+        <section class="contract-overview">
+            <h2>{{ $t('contractOverview') }}</h2>
+            <loading v-if="isLoadingBlock"></loading>
+            <ul v-else>
+                <li><b>{{ $t('contractName') }}: </b><span>{{info.name}}</span></li>
+                <li><b>{{ $t('contractStatus') }}: </b><span>{{info.status}}</span></li>
+                <li><b>{{ $t('contractBalance') }}: </b><span>{{+info.balance}} SSC</span></li>
+                <li><b>{{ $t('registTime') }}: </b><span>{{info.regTime|locale-time}}</span></li>
+                <li>
+                    <b>{{ $t('contractOwner') }}: </b>
+                    <span>
+                        <a v-if="!info.ownerName" @click="searchResult(info.ownerAddress,'')" class="fn-green-link">{{info.ownerAddress}}</a>
+                        <a v-else @click="searchResult(info.ownerAddress, info.ownerName)" class="fn-green-link">{{info.ownerName}}</a>
+                    </span>
+                </li>
+                <li><b>{{ $t('contractHash') }}: </b><span>{{info.hash}}</span></li>
+                <li><b>{{ $t('contractDesc') }}: </b><span>{{info.description}}</span></li>
+                <li><b>{{ $t('contractType') }}: </b><span>{{info.coinType}}</span></li>
+                <li><b>{{ $t('issueTotalAmount') }}: </b><span>{{info.coin ? +info.circulation : '--'}}</span></li>
+                <li class="official" v-show="info.coin && info.urls.length">
+                    <b>{{ $t('officialLink') }}: </b>
+                    <dl class="official-links" :class="$i18n.locale">
+                        <dd v-for="social in info.urls" :class="social.urlName"><a :href="social.url"></a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <div class="function_events">
+                <dl v-if="info.abis.length">
+                    <dt>{{ $t('contractFunc') }}:</dt>
+                    <dd>
+                        <span v-for="item in info.abis">{{item}}</span>
+                    </dd>
+                </dl>
+                <!-- <dl v-if="info.events.length">
+                    <dt>{{ $t('contractEvent') }}:</dt>
+                    <dd><span v-for="item in info.events">{{item}}</span></dd>
+                </dl> -->
+            </div>
+        </section>
+        <section class="deal-record">
+            <h2>{{ $t('transacRec') }}</h2>
+            <loading v-if="isLoadingDeal"></loading>
+            <div class="m-deal-cont" v-else>
+                <Transaction :deal-list="dealList"></Transaction> 
+                <pager :page-size="pageSize"
+                       :on-page-change="changePage"
+                       :page-num="pageNum"
+                       :page-no="pageNo"></pager>
+                <no-data v-if="isLoadingDeal === false && dealList && dealList.length === 0"></no-data>
+            </div>
+        </section>
+    </div>
+</div>

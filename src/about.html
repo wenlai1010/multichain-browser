@@ -1,0 +1,28 @@
+{% extends './include/layout-forum.html' %}
+
+{% block title %}Achain 社区{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="./scss/about.scss">
+{% endblock %}
+
+{% block content %}
+{% include "./include/forum/nav.html" with {page: "about"}%}
+
+
+<div class="forum-container">
+          
+{% include "./include/forum/aside.html" with {page: "about"}%}
+
+<div class="forum-about">
+    <h3>关于Achain</h3>
+    <p>Achain是一款简单、快速、安全的区块链平台，用户可以使用Achain快速部署数字资产、智能合约等企业级的去中心化应用。该平台历时两年开发，在多种数字资产发行方面得到了市场的认可，独创RDPOS分布式共识机制，实现了拥有自主知识产权的图灵完备智能合约虚拟机，链上交易性能高达1000TPS。</p>
+
+    <h3>关于Achain社区</h3>
+    <p>Achain专注于区块链技术的商业应用发掘。我们认为，通过平台开源，以社区为窗口，人们可以了解区块链、更深入的了解Achain平台及相关产品，一同学习和探讨未来的发展。同时，社区也可以让技术爱好者们在此碰撞、交流，共同打磨产品，让Achain平台更具价值。</p>
+    <p>Achain社区诚邀你加入。无论你是普通的网络用户、还是有志于区块链技术的人才，都将在这里发现并创造更多精彩。</p>
+</div>
+
+
+</div>
+{% endblock %}

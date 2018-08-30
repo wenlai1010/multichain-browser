@@ -1,0 +1,47 @@
+<div class="module-contract">
+    <div class="contract-cont">
+        <div class="search-box">
+            <input type="text" @keyup.enter="toSearchContract()" v-model="contractSearchTxt" :placeholder="$t('placehold')">
+            <span class="search-box-btn" @mouseenter="isHover=true" @mouseleave="isHover=false" @click="toSearchContract()">
+                <img calss="btn-search" src="./img/sc_icon3.png" alt="" width="24" style="margin-top: 18px" v-if="!isHover">
+                <img calss="btn-search" src="./img/sc_icon4.png" alt="" width="24" style="margin-top: 18px" v-else>
+            </span>
+            <span class="search-box-delete" v-if="contractSearchTxt" @click="toReload()"><img src="./img/delete.png" alt=""></span>
+        </div>
+        <section class="contract-block">
+            <div class="m-table">
+                <Loading v-if="isLoading"></Loading>
+                <table v-else>
+                    <thead>
+                    <tr>
+                        <th style="padding-left: 16px">{{ $t('contractName') }}</th>
+                        <th>{{ $t('contractType') }}</th>
+                        <th>ID</th>
+                        <th style="text-align: right">{{ $t('issueTotalAmount') }}</th>
+                        <!--<th>{{ $t('contractOwner') }}</th>-->
+                        <th style="padding-right: 36px; text-align: right">{{ $t('registTime') }}</th>
+                        <!--<th>{{ $t('contractStatus') }}</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in contractList" @click="toContractInfo(item.contractId)">
+                            <td width="180" style="padding-left: 16px"><i></i><span>{{item.contractName}}</span></td>
+                            <td width="150">{{item.coinType ? item.cType+'_'+item.coinType : item.cType}}</td>
+                            <td width="360">{{item.contractId}}</td>
+                            <td width="150" style="text-align: right">{{+item.coin ? +item.circulation : '--'}}</td>
+                            <!--<td v-if=!item.owner_name width="384">{{item.owner_address}}</td>-->
+                            <!--<td v-else width="384">{{item.owner_name}}</td>-->
+                            <td class="item-time" width="250">{{item.registerTime|locale-time}}</td>
+                            <!--<td width="110">{{item.status}}</td>-->
+                        </tr>
+                    </tbody>
+                </table>
+                <pager :page-size="pageSize"
+                       :on-page-change="changePage"
+                       :page-num="pageNum"
+                       :page-no="pageNo"></pager>
+                <p class="tip" v-text="$t('contractTip')" :class="{'nopage': pageNum==1}"></p>
+            </div>
+        </section>
+    </div>
+</div>

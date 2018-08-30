@@ -1,0 +1,133 @@
+/**
+ * @file 常用功能类&通用原子类
+ * @auth jinguangguo
+ * @date 2016/10/17
+ */
+
+.fn-clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+.fn-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+.fn-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.fn-selected {
+    background-color: $color-link;
+    color: #fff;
+}
+
+.fn-link-normal {
+    color: $color-font;
+    &:hover {
+        color: $color-link;
+    }
+}
+
+.fn-font-gray {
+    color: $color-font-gray;
+}
+
+.fn-mt15 {
+    margin-top: 15px;
+}
+
+.fn-mt10 {
+    margin-top: 10px;
+}
+
+.fn-mt5 {
+    margin-top: 5px;
+}
+
+.fn-mb20 {
+    margin-bottom: 20px;
+}
+
+.fn-mb24 {
+    margin-bottom: 24px;
+}
+
+.fn-mb15 {
+    margin-bottom: 15px;
+}
+
+.fn-mb10 {
+    margin-bottom: 10px;
+}
+
+.fn-mb5 {
+    margin-bottom: 5px;
+}
+
+.fn-mb40 {
+    margin-bottom: 40px;
+}
+
+.fn-block {
+    display: block;
+    width: 100%;
+}
+
+.fn-none {
+    display: none;
+}
+
+.fn-red {
+    color: $color-red;
+}
+
+.fn-green {
+    color: $color-green;
+}
+
+.fn-orange {
+    color: $color-orange;
+}
+
+.fn-gray {
+    color: $color-font-gray;
+}
+
+.fn-ta-left{
+    text-align: left;
+}
+.fn-ta-right{
+    text-align: right;
+}
+.fn-ta-center{
+    text-align: center;
+}
+
+.fn-input-error {
+    border: 1px #f9504b solid;
+    &:focus {
+        border: 1px #f9504b solid;
+    }
+    &:hover {
+        border: 1px #f9504b solid;
+    }
+}
+
+.fn-input-highlight {
+    border: 1px solid $color-link;
+}
+
+.fn-inline{
+    display: inline;
+}
+.fn-inline-b{
+    display: inline-block;
+}

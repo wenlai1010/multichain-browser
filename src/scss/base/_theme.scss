@@ -1,0 +1,196 @@
+/**
+ * @file
+ * @auth jinguangguo
+ * @date 2016/10/17
+ */
+
+html, body {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-size: 14px;
+    line-height: 1.4;
+    //font-family: Helvetica, Arial, sans-serif;
+    font-family: Hiragino Sans gb, Microsoft YaHei;
+    //font-family: 'Microsoft YaHei', 'hiragino sans gb', 'Arial', sans-serif;
+    color: #333;
+    // background-color: #f8f8f8;
+}
+
+body, input, select, textarea {
+    -webkit-font-smoothing: initial; // 抗锯齿
+    -moz-osx-font-smoothing: grayscale; // 抗锯齿
+}
+
+i, em, strong {
+    font-style: normal;
+}
+
+a {
+    color: $color-a-link;
+    text-decoration: none;
+    transition: color 0.4s;
+    cursor: pointer;
+    &:hover,
+    &:active,
+    &:link,
+    &:visited {
+        text-decoration: none;
+    }
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// 表单
+input, textarea {
+    box-sizing: border-box;
+    border: 1px rgba(255,255,255,.5) solid;
+    outline: 0;
+    font-size: 14px;
+    color: rgba(255,255,255,.5);
+    word-break: break-all;
+    &::-ms-clear,::-ms-reveal{display:none;}
+    &:hover {
+        border: 1px $color-border-hover solid;
+    }
+    &:focus {
+        border: 1px $color-link solid;
+        //color: #fff;
+    }
+    &[disabled="disabled"] {
+        background-color: $color-bg;
+        &:hover {
+            border: 1px #ccc solid;
+        }
+        &:focus {
+            border: 1px #ccc solid;
+        }
+    }
+}
+
+input {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 0 15px;
+    &[block] {
+        display: block;
+        width: 100%;
+    }
+}
+
+textarea {
+    padding: 8px;
+    resize: none;
+}
+
+button {
+    border: 0 none;
+    cursor: pointer;
+    border-radius: 2px;
+    &:focus {
+        outline: none;
+    }
+}
+
+th, td {
+    //word-break: break-all;
+}
+
+.icon {
+    vertical-align: text-bottom;
+    display: inline-block;
+    width: 20px;
+    height: 22px;
+    margin-right: 10px;
+}
+.cont-center{
+    width: $layout-width;
+    margin: 64px auto 80px;
+}
+.title-list{
+    margin-bottom: 22px;
+    line-height: 24px;
+    height: 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: $color-font;
+}
+//.ui-btn{
+//    display: inline-block;
+//    border: 1px solid $color-a-link;
+//    line-height: 32px;
+//    text-align: center;
+//    border-radius: 16px;
+//    cursor: pointer;
+//    &:hover{
+//        background-color: $color-a-link;
+//        color:#fff;
+//        text-decoration: none;
+//    }
+//}
+
+.input {
+    width: 256px;
+    &--small {
+        width: 128px;
+    }
+    &--large {
+
+    }
+}
+
+// input[type=number]的上下小箭头
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+
+// 滚动条样式
+::-webkit-scrollbar {
+    width: 8px;
+    height:8px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #dddddd;
+    height: 50px;
+    outline-offset: -2px;
+    outline: 2px solid #fff;
+    -webkit-border-radius: 4px;
+    border: 2px solid #fff;
+}
+
+//input[placeholder], [placeholder], *[placeholder] {
+//    color:red !important;
+//}
+
+::-webkit-input-placeholder {
+    color: #ccc;
+}
+.item-color-link {
+    color:$color-green;
+    cursor: pointer;
+}
+.item-color-link:hover {
+    color:$color-green;
+    cursor: pointer;
+}
+
+//input::-webkit-input-placeholder {
+//　　color: red !important;
+//}
+//input::-moz-placeholder {
+//　　color: #ccc !important;
+//}
+//input::-moz-placeholder {
+//　　color: #ccc !important;
+//}
+//input:-ms-input-placeholder {
+//　　color: #ccc !important;
+//}
+

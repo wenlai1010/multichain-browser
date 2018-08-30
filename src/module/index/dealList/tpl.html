@@ -1,0 +1,14 @@
+<div class="module-dealList cont-center">
+    <div class="mall-deallist-content">
+        <h1 class="dealList-title title-list"><img class="icon" src="../img/deal_icon.png" alt="">{{ $tc("transac",2) }}</h1>
+        <loading v-if="isLoading" class="table-cont-loading"></loading>
+        <div class="mall-deal-cont" v-else>
+            <AllTranList :deal-list="dealList" :title-show="true"></AllTranList>    
+                
+            <pager :page-size="condition.pageSize"
+                   :on-page-change="changePage"
+                   :page-num="pageNum"
+                   :page-no="+condition.pageNo"></pager>
+        </div>
+    </div>
+</div>

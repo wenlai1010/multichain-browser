@@ -1,0 +1,39 @@
+<div class="module-address">
+    <h2 class="text-center module-wallet-title">{{ $t("analyzeMnemonic") }}</h2>
+    <form class="module-wallet-form">
+        <div class="form-group">
+            <label for="phrase">{{ $t("inputPhrase") }}</label>
+            <input type="email" autocomplete="off" class="form-control" id="phrase" :placeholder="$t('inputPhrase')"
+                   v-model="phrase">
+        </div>
+        <div class="form-group">
+            <label for="pwd">{{ $t("password") }}</label>
+            <input type="password" class="form-control" id="pwd" autocomplete="new-password"
+                   :placeholder="$t('password')" v-model="password">
+        </div>
+        <div class="form-group">
+            <label for="comfirmPwd">{{ $t("comfirmPwd") }}</label>
+            <input type="password" class="form-control" id="comfirmPwd" autocomplete="new-password"
+                   :placeholder="$t('comfirmPwd')" v-model="comfirmPwd">
+        </div>
+        <div class="form-btns">
+            <button type="button" class="btn btn-info btn-block" :disabled="!phrase || !password || !comfirmPwd"
+                    @click="fetchActAddr">{{ $t("generateAddr") }}
+            </button>
+            <button type="button" class="btn btn-info btn-block" :disabled="!phrase || !password || !comfirmPwd"
+                    @click="exportPrivKey">{{ $t("generatePrivKey") }}
+            </button>
+            <button type="button" class="btn btn-info btn-block" :disabled="!phrase || !password || !comfirmPwd"
+                    @click="toSign">{{ $t("toSign") }}
+            </button>
+        </div>
+        <div class="form-group" v-if="actAddress">
+            <label for="actAddress2">ACT {{ $t("address") }}</label>
+            <input type="text" class="form-control" id="actAddress2" v-model="actAddress">
+        </div>
+        <div class="form-group" v-if="wifPrivateKey">
+            <label for="privKey">{{ $t('privKey') }}</label>
+            <input type="text" class="form-control" id="privKey" v-model="wifPrivateKey">
+        </div>
+    </form>
+</div>

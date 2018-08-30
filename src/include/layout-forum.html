@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1184, user-scalable=yes">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="./scss/dep/animate.css">
+    <script src="./dep/boot.js"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+<article class="layout-wrapper">
+    <div class="layout-wrapper-box" id="app">
+        {% block content %}{% endblock %}
+    </div>
+</article>
+{% block footer %}{% endblock %}
+<script src="./dep/jquery.3.1.1.min.js"></script>
+<script>
+        (function(){
+            var page = location.pathname.match(/\/(\w+)\./);
+            $('.'+page[1]+'-link a').addClass('none');
+            $('.'+page[1]+'-link span').removeClass('none');
+        }()); 
+</script>
+{% block script %}{% endblock %}
+</body>
+</html>

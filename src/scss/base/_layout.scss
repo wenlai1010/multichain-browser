@@ -1,0 +1,81 @@
+/**
+ * @file
+ * @auth jinguangguo
+ * @date 2016/10/18
+ */
+
+/*
+ * 布局函数
+ */
+@mixin layoutContent($width, $height) {
+    min-height: 100%;
+    margin-top: -$height;
+    .layout-wrapper-box {
+        padding-top: $height;
+        .layout-loading {
+            height: $height-left-nav-min;
+            line-height: $height-left-nav-min;
+            background-color: #fff;
+            text-align: center;
+        }
+        .layout-header {
+            height: 28px;
+            background-color: #282828;
+        }
+        .layout-content {
+            width: $width;
+            margin: 16px auto;
+            background-color: #fff;
+            &-box {
+                padding: 40px 32px;
+                margin-bottom: 16px;
+                background-color: #fff;
+                @include shadow;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .layout-body {
+            display: flex;
+            width: $width;
+            margin: 24px auto;
+            margin-bottom: 56px;
+            .layout-body-nav {
+                flex: 0 0 176px;
+                min-height: $height-left-nav-min;
+                background-color: #fff;
+                @include shadow();
+            }
+            .layout-body-module {
+                flex: 0 0 992px;
+                margin-left: 16px;
+                box-sizing: border-box;
+            }
+        }
+    }
+}
+
+/*
+    $layout-width
+*/
+
+.layout-wrapper {
+    overflow: auto;
+    @include layoutContent($layout-width, $layout-footer-height);
+}
+
+.layout-wrapper-simple {
+    @include layoutContent($layout-width, $layout-footer-height-simple);
+}
+
+.layout-normal {
+    width: $layout-width;
+    margin: 0 auto;
+}
+
+// 站外
+.layout-web {
+    padding-top: 160px;
+    text-align: center;
+}

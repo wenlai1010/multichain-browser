@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <title>Achain Smart Contract: Lucky Package</title>
+    <style>
+        iframe {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+   <p><textarea v-model="address" cols="50" rows="10" placeholder="拷贝地址"></textarea></p>
+   <p><button @click="grab">走起</button></p>
+   <p v-html="addrTxt.join('&lt;br>')"></p>
+</div>
+
+<script src="./dep/jquery.3.1.1.min.js"></script>
+<script src="./dep/vue.2.4.4.js"></script>
+<script src="./js/grab.js"></script>
+</body>
+</html> 

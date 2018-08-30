@@ -1,0 +1,41 @@
+<div class="comp-block cont-center module-ranking">
+    <div class="layout-index">
+        <div class="fn-clearfix">
+            <div class="m-block-content">
+                <div class="m-review">
+                    <div class="module-ranking-list">
+                        <span>{{ $t("coinType") }}</span>
+                        <asset-drop :coin="coinType" :coin-list="coinList" :onSuccess="changeCoinType" :is-show="isShow"></asset-drop>
+                    </div>
+                    <loading v-if="isLoading"></loading>
+                    <div class="m-table" v-else>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>{{ $t("blockRanking") }}</th>
+                                <th>{{ $t("blockCoin") }}</th>
+                                <th>{{ $t("blockAddress") }}</th>
+                                <th>{{ $t("blockAmount") }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(blockItem,index) in blockList">
+                                <td class="fn-green-link" width="389">{{mathtools.multiplication(currentPage,condition.pageSize)+index+1}}</td>
+                                <td width="236" class="gray-data">{{blockItem.coin_type.replace(/JRT/i,'JR10')}}</td>
+                                <td width="467" class="ranking-from" @click="searchResult(blockItem.user_address,'')">{{blockItem.user_address}}</td>
+                                <td width="108">{{+blockItem.balance}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <pager :page-size="condition.pageSize"
+                               :on-page-change="changePage"
+                               :page-num="pageNum"
+                               :page-no="+condition.pageNo"></pager>
+                    </div>
+                    <no-data v-if="isLoading === false && blockList && blockList.length === 0"></no-data>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

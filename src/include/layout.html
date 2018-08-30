@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1184, user-scalable=yes">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="./scss/dep/animate.css">
+    <link href="../img/favicon.ico" rel="Shortcut Icon" />
+    <script src="./dep/boot.js"></script>
+    <!-- <script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', '88d289fb6b364417']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'assets.growingio.com/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+    </script> -->
+    {% block head %}{% endblock %}
+</head>
+<body class="home">
+<article class="layout-wrapper">
+    <div class="layout-wrapper-box" id="app">
+        {% block content %}{% endblock %}
+    </div>
+</article>
+{% block footer %}{% endblock %}
+<script src="./dep/jquery.3.1.1.min.js"></script>
+<script src="./dep/vue.2.4.4.js"></script>
+<script src="./dep/vue-router.2.7.0.min.js"></script>
+<script src="./dep/moment.2.15.1.min.js"></script>
+<script src="./dep/lodash.4.16.4.min.js"></script>
+{% block script %}{% endblock %}
+</body>
+</html>

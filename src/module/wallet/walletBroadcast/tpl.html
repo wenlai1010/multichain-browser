@@ -1,0 +1,22 @@
+<div class="wallet-broadcast">
+        <div class="result">
+            <div class="w-container status processing" v-if="processing" v-text="$t('broadcastProcessing')"></div>
+            <div class="w-container status fail" v-if="fail" v-text="failMsg"></div>
+            <div class="w-container status success" v-if="success" v-text="$t('broadcastSuccess')"></div>
+            <div class="w-container">
+                <h3><small v-show="trxId"><a :href="'/index.html#/tradeInfo/'+ trxId" target="blank" v-text="$t('viewTrans')"></a></small><span v-text="$t('broadcastResult')"></span></h3>
+                <pre v-text="resultJson"></pre>
+            </div>
+        </div>
+
+        <form class="input-form w-container">
+            <p><textarea class="form-input" name="message" :placeholder="$t('fillMessage')" v-model="signature"></textarea></p>
+            <p class="code-img">
+                <img :src="imageCode" alt="" @click="getCode">
+                <input type="text" name="code" class="form-input" v-model="code" maxlength="4">
+                <button @click="sendSignature(event)" v-if="!processing" v-text="$t('broadcast')"></button>
+                <button disabled v-else v-text="$t('broadcast')"></button>
+            </p>
+            <input type="hidden" name="imgCodeKey" :value="imgCodeKey">
+        </form>
+</div>

@@ -1,0 +1,23 @@
+
+@import "./base/style";
+@import "../include/forum/nav";
+@import "../include/forum/aside";
+
+ .forum-about {
+     margin-left: 160px;
+     padding: 0 48px 48px;
+     line-height: 2;
+     overflow: hidden;
+     border-left: 1px solid #ddd;
+     
+     h3 {
+         color: #333;
+         margin-top: 48px; 
+         margin-bottom: 24px; 
+     }
+     p {
+         color: #a1a1a1;
+         margin-bottom: 24px; 
+         text-indent:2em;
+     }
+ }

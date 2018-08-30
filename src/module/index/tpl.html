@@ -1,0 +1,81 @@
+<div class="module-index">
+    <div class="index-header">
+       <globebg class="currentPage">
+            <section class="toload forRefresh home">
+                    <header id="ourintro">
+                        <div id="webgl-canvas"></div>
+                    </header>
+            </section>
+        </globebg>
+        <section class="index-header-cont">
+            <p class="index-header-cont-share">Building a Boundless Blockchain Reality</p>
+            <div class="search-box">
+                <!-- <input class="search-box-input" v-model="searchTxt" @keyup.enter="toSearch()" type="text" placeholder="区块Hash、区块高度、合约ID、交易ID、账户名称、账户地址"> -->
+                <input class="search-box-input" v-model="searchTxt" @keyup.enter="toSearch()" type="text" :placeholder="$tc('block',1)+' Hash, '+$t('blockHeight')+', '+$tc('transac',1)+' ID, '+$t('accountName')+', '+$t('accountAddr')">
+                <span class="search-box-btn" @mouseenter="isHover=true" @mouseleave="isHover=false" @click="toSearch()">
+                    <img calss="btn-search" src="./img/sc_icon.png" alt="" width="24" style="margin-top: 18px" v-if="!isHover">
+                    <img calss="btn-search" src="./img/sc_icon2.png" alt="" width="24" style="margin-top: 18px" v-else>
+                </span>
+            </div>
+        </section>
+    </div>
+    <section class="index-middle fn-clearfix" >
+        <section class="index-block">
+            <h1 class="index-block-title"><span><img class="icon" src="./img/block_icon.png" alt="">{{ $tc("block",2) }}</span><span class="more-btn" @click="toBlockList">{{ $t("moreBlock") }}</span></h1>
+            <div class="index-block-content">
+                <loading v-if="isLoadingBlock"></loading>
+                <section v-else>
+                    <ul class="index-block-content-list top-item">
+                        <li v-for="(item,index) in blockList0" :class="{'me-animated  fastDown':index==0}">
+                            <p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>
+                            <p class="item-2"> > {{item.block_elapsed_time}}</p>
+                            <p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>
+                            <p class="item-4"><span>{{item.trans_num}}</span> transactions</p>
+                        </li>
+                    </ul>
+                    <ul class="index-block-content-list">
+                        <li v-for="(item,index) in blockList1" :class="{'me-animated  mefadeOutRight':index==0 ||index==1 ,'me-animated  mefadeOutDown':index==2}">
+                            <p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>
+                            <p class="item-2"> > {{item.block_elapsed_time}}</p>
+                            <p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>
+                            <p class="item-4"><span>{{item.trans_num}}</span> transactions</p>
+                        </li>
+                    </ul>
+                    
+                    <ul class="index-block-content-list">
+                        <li v-for="(item,index) in blockList2" :class="{'me-animated  mefadeOutDown':index==0,'me-animated  mefadeOutLeft':index==1 || index==2}">
+                            <p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>
+                            <p class="item-2"> > {{item.block_elapsed_time}}</p>
+                            <p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>
+                            <p class="item-4"><span>{{item.trans_num}}</span> transactions</p>
+                        </li>
+                    </ul>
+
+                    <ul class="index-block-content-list">
+                        <li v-for="(item,index) in blockList3" :class="{'me-animated  mefadeOutRight':index==0 || index==1, 'me-animated  mefadeOutDown':index==2}">
+                            <p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>
+                            <p class="item-2"> > {{item.block_elapsed_time}}</p>
+                            <p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>
+                            <p class="item-4"><span>{{item.trans_num}}</span> transactions</p>
+                        </li>
+                    </ul>
+                    <ul class="index-block-content-list">
+                        <li v-for="(item,index) in blockList4" :class="{'me-animated  mefadeOutLeft': index==1 || index==2,'only-animated  fastLeft': index==0}">
+                            <p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>
+                            <p class="item-2"> > {{item.block_elapsed_time}}</p>
+                            <p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>
+                            <p class="item-4"><span>{{item.trans_num}}</span> transactions</p>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+        <section class="index-deal">
+            <h1 class="index-deal-title"><span><img class="icon" src="./img/deal_icon.png" alt="">{{ $tc("transac",2) }}</span><span class="more-btn only" @click="toDealList">{{ $t("moreTransac") }}</span></h1>
+            <loading v-if="isLoadingDeal" class="table-cont-loading"></loading>
+            <div class="me-deal-list" v-else>
+                <TransactionList :deal-list="dealList"></TransactionList>
+            </div>
+        </section>
+    </section>
+</div>

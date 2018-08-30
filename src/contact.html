@@ -1,0 +1,33 @@
+{% extends './include/layout-forum.html' %}
+
+{% block title %}Achain 社区{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="./scss/contact.scss">
+{% endblock %}
+
+{% block content %}
+{% include "./include/forum/nav.html" with {page: "about"}%}
+
+
+<div class="forum-container">
+          
+{% include "./include/forum/aside.html" with {page: "about"}%}
+
+<div class="forum-contact">
+    <h3>联系方式</h3>
+    <p class="email">邮箱：<a href="mailto:hi@Achain.com">hi@Achain.com</a></p>
+    <ul class="clearfix">
+        <li class="customer left">
+            <p>微信客服：Achain_secretary</p>
+            <p><img src="https://www.achain.com/images/qrcode-wx_8834f4.png" width="180"></p>
+        </li>
+
+        <li class="customer left">
+            <p>开发交流QQ群：398426997</p>
+            <p><img src="https://www.achain.com/images/qrcode-qq-tech_248c50.png" width="180"></p>
+        </li>
+    </ul>
+</div>
+</div>
+{% endblock %}

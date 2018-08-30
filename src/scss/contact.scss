@@ -1,0 +1,31 @@
+
+@import "./base/style";
+@import "../include/forum/nav";
+@import "../include/forum/aside";
+
+.forum-contact {
+    margin-left: 160px;
+    padding: 0 48px 48px;
+    line-height: 2;
+    overflow: hidden;
+    border-left: 1px solid #ddd;
+    
+    h3 {
+        color: #333;
+        margin-top: 48px; 
+        margin-bottom: 24px; 
+    }
+    p.email {
+        text-indent: 6em;
+    }
+    ul {
+        margin-top: 24px;
+        li {
+            width: 50%;
+            text-indent: 6em;
+            p:first-child {
+                margin-bottom: 12px;
+            }
+        }
+    }
+}

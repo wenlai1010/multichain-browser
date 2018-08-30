@@ -1,0 +1,64 @@
+<div class="comp-block cont-center">
+    <div class="layout-index">
+        <div class="block-id">
+            {{ $t('blockHeight') }}：<span>{{currentBlockNum}}</span>
+        </div>
+        <div class="block-select">
+            <span class="ui-btn" @click="showPrevBlock()">{{ $t('prevBlock') }}</span>
+            <span class="ui-btn" @click="showNextBlock()">{{ $t('nextBlock') }}</span>
+        </div>
+        <div class="m-block-content">
+            <div class="m-review" v-if="isLoadingInfo">
+                <loading></loading>
+            </div>
+            <div class="m-review" v-else>
+                <div class="review-title">
+                    {{ $t('blockOverview') }}
+                </div>
+                <div class="review-cont">
+                    <div class="review-cont-left">
+                        <div class="cont-item">
+                            <span class="item-title">{{ $tc('block',1) }} Hash:</span>
+                            <span class="item-info">{{block.block_id}}</span>
+                        </div>
+                        <div class="cont-item">
+                            <span class="item-title">{{ $t('transacAmount') }}: </span>
+                            <span class="item-info">{{+block.trans_amount}} SSC</span></div>
+                        <div class="cont-item">
+                            <span class="item-title">{{ $t('blockSize') }}(Bytes): </span>
+                            <span class="item-info">{{block.block_size}}</span></div>
+                        <div class="cont-item">
+                            <span class="item-title">{{ $t('blockAward') }}:  </span>
+                            <span class="item-info">{{block.block_bonus}} SSC</span></div>
+                    </div>
+                    <div class="review-cont-right">
+                        <div class="cont-item">
+                            <span class="item-title">{{ $t('transacNum') }}: </span>
+                            <span class="item-info">{{block.trans_num}}{{ $t('transacUnit') }}</span></div>
+                        <div class="cont-item">
+                            <span class="item-title">{{ $t('blockAgent') }}: </span>
+                            <a class="item-info" @click="toBlockAgent(block.signee)">{{block.signee}}</a></div>
+                        <div class="cont-item">
+                            <span class="item-title">{{ $t('blockCommission') }}: </span>
+                            <span class="item-info">{{+block.trans_fee}} SSC</span></div>
+                        <div class="cont-item">
+                            <span class="item-title">{{ $t('blockTime') }}: </span>
+                            <span class="item-info">{{block.block_time|locale-time}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-review m-review--nopadding">
+                <div class="review-title review-title--noborder">{{ $t('transacRec') }}</div>
+                <loading v-if="isLoadingDeal"></loading>
+                <div class="mall-deal-cont" v-else>
+                    <Transaction :deal-list="tradeList" :title-show="false"></Transaction>
+                    <pager :page-size="condition.pageSize"
+                           :on-page-change="changePage"
+                           :page-num="pageNum"
+                           :page-no="+condition.pageNo"></pager>
+                    <no-data v-if="!isLoadingDeal && tradeList.length == 0"></no-data>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

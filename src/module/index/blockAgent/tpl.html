@@ -1,0 +1,46 @@
+<div class="comp-block cont-center">
+    <div class="layout-index">
+        <div class="fn-clearfix">
+            <div class="block-id">
+                {{ $t('blockAgent') }}：<span> {{agentName}}</span>
+            </div>
+            <div class="m-block-content">
+                <div class="m-review">
+                    <div class="review-title">
+                        {{ $t('blockList') }}
+                    </div>
+                    <loading v-if="isLoading"></loading>
+                    <div class="m-table" v-else>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>{{ $t("blockHeight") }}</th>
+                                <th>{{ $t("generateTime") }}</th>
+                                <th>{{ $t("transacNum") }}</th>
+                                <th>{{ $t("transacAmount") }}（SSC）</th>
+                                <th>{{ $t("blockSize") }}（Bytes）</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="blockItem in blockList">
+                                <td class="fn-green-link" width="217">
+                                    <a @click="toBlockInfo(blockItem.block_num)">{{+blockItem.block_num}}</a></td>
+                                <td width="200" class="gray-data">{{blockItem.block_time|locale-time}}</td>
+                                <td width="217">{{blockItem.trans_num}}</td>
+                                <td width="254">{{+blockItem.trans_amount}}</td>
+                                <td width="200">{{blockItem.block_size}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <pager :page-size="condition.pageSize"
+                               :on-page-change="changePage"
+                               :page-num="pageNum"
+                               :page-no="+condition.pageNo"></pager>
+                    </div>
+                    <no-data v-if="isLoading === false && blockList && blockList.length === 0"></no-data>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

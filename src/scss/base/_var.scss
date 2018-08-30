@@ -1,0 +1,44 @@
+/**
+ * @file
+ * @auth jinguangguo
+ * @date 2016/10/17
+ */
+
+$color-font: #333;
+$color-font-light: #666;
+$color-font-gray: #676767;
+$color-value-gray: #333;
+
+$color-link: #f4a00e;
+$color-a-link: #010101;
+$colo-a-link-dark: #4845b8;
+$color-link-hover: #129CFF;
+$color-link-dark: #007df1;
+
+$color-bg: #f5f5f5;
+$color-bg-light: #fafafb; // 用于hover背景
+$color-border: #eee;
+$color-border-hover: #a9a9a9;
+$color-bg-th: #f0f0f0; //表格头部背景
+
+$color-yellow: #ffc30d;
+$color-orange: #fc7274;
+$color-red: #ed0d2a;
+$color-green: #00bb95;
+$color-green-total: #1bc3ae;
+$color-green-link: #00bb95;
+
+//$layout-width: 1184px;
+$layout-width: 1160px;
+$layout-footer-height: 60px;
+$layout-footer-height-simple: 68px;
+$height-module-min: 450px;
+$height-table-min: 120px;
+$height-left-nav-min: 704px;
+
+$path_global_img: '../img';
+
+
+$zIndex_popover: 10;
+$zIndex_modal: 90;
+$zIndex_toast: 100;

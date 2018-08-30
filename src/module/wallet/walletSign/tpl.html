@@ -1,0 +1,100 @@
+<div class="wallet-sign">
+    <div class="act-addr">
+        <p><span>{{$t('myAddress')}}</span> <a href="javascript:;" v-if="!actAddress" @click="openGenerateBox">{{$t('importAddress')}}</a> <a :href="'/index.html#/searchResult?fromAddress='+actAddress" target="_blank" v-show="actAddress">{{$t('balance')}}</a> <a href="javascript:;" v-show="actAddress">{{$t('myCode')}} <span class="qrcode" ref="qrcode"></span></a></p>
+        <p><span v-text="actAddress"></span> <a href="javascript:;" @click="openGenerateBox" v-if="actAddress">{{$t('changeAddress')}}</a></p>
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li @click="setSignType('transfer')" :class="{'active': signType=='transfer'}"><a href="javascript:;" v-text="$t('contractTransfer')"></a></li>
+        <li @click="setSignType('contractCall')" :class="{'active': signType=='contractCall'}"><a href="javascript:;" v-text="$t('contractCall')"></a></li>
+    </ul>
+
+    <div class="sign-result">
+        <div class="result" v-show="signature">
+            <signature :sign="signature"></signature>
+        </div>
+
+    
+        <div class="input-form w-container">
+            <!-- <p><label v-text="$t('wifPrivKey')"></label><sup><router-link style="float:right" :to="{name:'wallet', params:{link: 'usePhrase'}}">{{$t('usePhrase')}}</router-link></sup></p>
+            <p>
+                <input class="form-control key-input" type="text" v-model="privKey" @input="trim($event, 'privKey')">
+                <button class="form-control import-gkey" @click="$refs.gkey.click()" v-text="$t('importGkey')"></button>
+                <input type="file" ref="gkey" class="gkey-file" @change="readGkeyFile($event)">
+                <br>
+                <small v-if="actAddress" class="act-address"><span>ACT {{$t('address')}}: </span><span v-text="actAddress"></span></small>
+            </p> -->
+            <input type="file" ref="gkey" class="gkey-file" @change="readGkeyFile($event)">
+
+
+            <!-- 转账 -->
+            <div v-if="signType=='transfer'">
+                <p><label for="" v-text="$t('label2')"></label></p>
+                <p>
+                    <select class="form-control transfer-type" v-model="transferType">
+                        <option v-for="(coin, index) in coinList" :value="index">{{coin.coinType}}</option>
+                    </select>
+                    <input class="form-control transfer-addr" disabled type="text" :value="transContractId">
+                </p>
+                <p><label for="" v-text="$t('label3')"></label></p>
+                <p><input class="form-control" type="text" v-model="transferAddress" @input="trim($event, 'transferAddress')"></p>
+
+                <p><label for="" v-text="$t('label4')"></label></p>
+                <p><input class="form-control" type="text" v-model="transferAmount" @input="trim($event, 'transferAmount')"></p>
+
+                <p><label for="" v-text="$t('label5')+$t('optional')"></label></p>
+                <p><input class="form-control" :disabled="transferType!==0" type="text" v-model="transferNote" maxlength="40"></p>
+
+                <p><button class="btn btn-default navbar-btn" v-text="$t('generateSign')" @click="transferCoin"></button></p>
+            </div>
+
+
+            <!--调用合约 -->
+            <div v-if="signType=='contractCall'">
+                <p><label for="" v-text="$t('label6')"></label></p>
+                <p><input class="form-control" type="text" v-model="callContractId" @input="trim($event, 'callContractId')"></p>
+    
+                <p><label for="" v-text="$t('label7')"></label></p>
+                <p><input class="form-control" type="text" v-model="contractFn" @input="trim($event, 'contractFn')"></p>
+    
+                <p><label for="" v-text="$t('label8')+$t('optional')"></label></p>
+                <p><input class="form-control" type="text" v-model="contractParams" @input="trim($event, 'contractParams')"></p>
+                
+                <p><button class="btn btn-default navbar-btn" v-text="$t('generateSign')" @click="callContract"></button></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="generate-box" v-show="showGenerateBox">
+        <div class="generate-box-bg"></div>
+        <div class="generate-box-content">
+            <p class="generate-box-close" @click="showGenerateBox=false"></p>
+            
+            <ul class="nav nav-tabs">
+                <li @click="setImportType('privkey')" :class="{'active': importType=='privkey'}"><a href="javascript:;" v-text="$t('importPriv')"></a></li>
+                <li @click="setImportType('gkey')" :class="{'active': importType=='gkey'}"><a href="javascript:;" v-text="$t('importGkey')"></a></li>
+                <li @click="setImportType('mnemonic')" :class="{'active': importType=='mnemonic'}"><a href="javascript:;" v-text="$t('importMnemonic')"></a></li>
+            </ul>
+
+            <div v-show="importType=='privkey'">
+                <p><input class="form-control key-input" type="text" v-model="wifPrivkey" @input="trim($event, 'privKey')"></p>
+                <p><button class="btn btn-info" @click="confirmPrivkey" v-text="$t('confirm')"></button></p>
+            </div>
+
+            <div v-show="importType=='gkey'">
+                <p><button class="btn btn-info" @click="$refs.gkey.click()" v-text="$t('importGkey')"></button></p>
+            </div>
+            
+            <div v-show="importType=='mnemonic'">
+                <p class="title"><label for="">{{$t('phrase')}}</label></p>
+                <p class="input"><input class="form-control key-input" type="text" v-model="mnemonic"></p>
+                <p class="title"><label for="">{{$t('password')}}</label></p>
+                <p class="input"><input class="form-control key-input" type="password" v-model="password"></p>
+                <p><button class="btn btn-info" @click="confirmMnemonic" v-text="$t('confirm')"></button></p>
+            </div>
+            
+        </div>
+    </div>
+
+    
+</div>

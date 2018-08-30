@@ -1,0 +1,15 @@
+<div class="bonus-result">
+    <p class="bonus-env-top"></p>
+    <div class="result-area">
+        <p v-text="$t('youObtain')"></p>
+        <h1>{{amount}} <small>SSC</small></h1>
+        <p class="address-link" v-show="isFirstTime"><a :href="'https://browser.achain.com/index.html#/searchResult?fromAddress='+ address + '&fromAcct='" v-text="$t('viewTrans')"></a></p>
+    </div>
+    <p class="bonus-env-bottom"></p>
+
+    <div class="bottom-links">
+        <p><a href="javascript:;" @click="isShowDetail=!0" v-text="$t('getDetail')"></a></p>
+    </div>
+    <Detail :show-detail="isShowDetail" @hideDetail="isShowDetail=!1"></Detail>
+    <Tip :content="tipText" :show-flag="isShowTip" @hidetips="hideTips"></Tip>
+</div>

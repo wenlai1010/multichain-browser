@@ -1,0 +1,28 @@
+/**
+ * @file
+ * @auth jinguangguo
+ * @date 2016/10/17
+ */
+
+@mixin link {
+    color: $color-link;
+    text-decoration: none;
+    transition: color 0.4s;
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+        text-decoration: none;
+    }
+    &:hover {
+        color: $color-link-hover;
+        text-decoration: none;
+    }
+    &:active {
+        color: $color-link-dark;
+    }
+}
+
+@mixin shadow {
+    box-shadow: 1px 1px 5px rgba(125, 125, 125, 0.04);
+}

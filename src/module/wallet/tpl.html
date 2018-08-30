@@ -1,0 +1,39 @@
+<div class="module-wallet">
+    <section v-if="!hasGetPhrase">
+        <h2 class="text-center module-wallet-title">{{ $t("walletTitle") }}</h2>
+        <p @click="toWalletAddr" class="text-primary text-right module-wallet-info" style="cursor: pointer">{{
+            $t("walletLink") }}</p>
+        <form class="module-wallet-form">
+            <div class="form-group" style="margin-bottom: 24px">
+                <label>{{ $t('phrase') }}</label>
+                <div class="form-group-phrase" v-html="phrase" style="font-size: 18px"></div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">{{ $t('setPwd') }}</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="new-password"
+                       :placeholder="$t('password')" v-model="password">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword2">{{ $t('comfirmPwd') }}</label>
+                <input type="password" class="form-control" id="exampleInputPassword2" autocomplete="new-password"
+                       :placeholder="$t('comfirmPwd')" v-model="comfirmpPwd">
+            </div>
+        </form>
+        <div class="module-wallet-alert">{{ $t('walletTip') }}</div>
+        <button type="button" class="btn btn-info btn-block" :disabled="!password || !comfirmpPwd" @click="fetchActAddr">{{
+            $t("toVerify") }}
+        </button>
+    </section>
+    <section v-if="hasGetPhrase">
+        <h2 class="text-center module-wallet-title">{{ $t("verifyPhrase") }}</h2>
+        <form class="module-wallet-form">
+            <div class="form-group" style="margin-bottom: 48px">
+                <label for="inputPhrase">{{ $t("verifyPhrase") }}</label>
+                <input type="text" class="form-control" id="inputPhrase" autocomplete="off" :placeholder="$t('inputPhrase')" v-model="inputPhraseStr">
+            </div>
+            <!--<div class="alert alert-info" role="alert">{{ $t('phraseTip') }}</div>-->
+            <button type="button" class="btn btn-info btn-block" :disabled="!inputPhraseStr" @click="toWallet()">{{
+                $t("toWallet") }}</button>
+        </form>
+    </section>
+</div>

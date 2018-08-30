@@ -1,0 +1,245 @@
+/**
+ * @file
+ * @auth donglele
+ * @date 2017/2/15
+ */
+.contract-cont{
+  width: $layout-width;
+  margin: 0 auto;
+  padding-top: 50px;
+  %commonTitle{
+    margin-bottom: 20px;
+    line-height: 20px;
+    font-size: 20px;
+  }
+  .contract-addr{
+   @extend %commonTitle;
+    span{
+      display: inline-block;
+      margin-left: 15px;
+    }
+  }
+  &-inner{
+    width: 100%;
+    padding: 40px 60px 60px;
+    margin-bottom: 80px;
+    background: #fff;
+    h2{
+      @extend %commonTitle;
+    }
+
+    .contract-overview{
+      position: relative;
+      margin-bottom: 45px;
+      ul{
+        padding-top: 25px;
+        border-top: 1px solid #e8e8e8;
+        line-height: 44px;
+        li{
+          >b{
+            position: absolute;
+            width: 125px;
+            font-weight: normal;
+          }
+          >span{
+            display: inline-block;
+            padding-left: 125px;
+            word-break: break-all;
+          }
+        }
+        li.official{
+          height: 44px;
+          .official-links{
+            margin-left: 125px;
+            padding-top: 10px;
+
+            dd {
+              margin-right: 8px;
+              position: relative;
+              float: left;
+              a {
+                width: 24px;
+                height: 24px;
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                display: block;
+              }
+
+              &.reddit{
+                & a{
+                  background-image: url("../img/redditv.png");
+                  &:hover {
+                    background-image: url("../img/reddit.png");
+                  }
+                }
+                &:before {
+                  content: 'Reddit';
+                }
+              }
+              &.slack {
+                & a{
+                  background-image: url("../img/slackv.png");
+                  &:hover {
+                    background-image: url("../img/slack.png");
+                  }
+                }
+                &:before {
+                  content: 'Slack';
+                }
+              }
+              &.telegram {
+                & a{
+                  background-image: url("../img/telegramv.png");
+                  &:hover {
+                    background-image: url("../img/telegram.png");
+                  }
+                }
+                &:before {
+                  content: 'Telegram';
+                  width: 70px;
+                  margin-left: -35px;
+                }
+              }
+              &.facebook{
+                & a{
+                  background-image: url("../img/facebookv.png");
+                  &:hover {
+                    background-image: url("../img/facebook.png");
+                  }
+                }
+                &:before {
+                  content: 'Facebook';
+                  width: 70px;
+                  margin-left: -35px;
+                }
+              }
+              &.twitter{
+                & a{
+                  background-image: url("../img/twitterv.png");
+                  &:hover {
+                    background-image: url("../img/twitter.png");
+                  }
+                }
+                &:before {
+                  content: 'Twitter';
+                }
+              }
+              &.github{
+                & a{
+                  background-image: url("../img/githubv.png");
+                  &:hover {
+                    background-image: url("../img/github.png");
+                  }
+                }
+                &:before {
+                  content: 'Github';
+                }
+              }
+              &.website{
+                & a{
+                  background-image: url("../img/official-webv.png");
+                  &:hover {
+                    background-image: url("../img/official-web.png");
+                  }
+                }
+                &:before {
+                  content: 'Website';
+                  width: 60px;
+                  margin-left: -30px;
+                }
+              }
+              &.document{
+                & a{
+                  background-image: url("../img/white-paperv.png");
+                  &:hover {
+                    background-image: url("../img/white-paper.png");
+                  }
+                }
+                &:before {
+                  content: 'White Paper';
+                  width: 90px;
+                  margin-left: -45px;
+                }
+                &.cn:before {
+                  content: '白皮书';
+                }
+              }
+
+              &:before {
+                position: absolute;
+                top: -30px;
+                left: 50%;
+                margin-left: -25px;
+                display: inline-block;
+                background: #ddd;
+                color: #333;
+                font-size: 12px;
+                line-height: 1.5;
+                text-align: center;
+                padding: 4px 0;
+                width: 50px;
+                opacity: 0;
+                transition: opacity .4s;
+              }
+              &:hover:before { opacity: 1 }
+            }
+
+            &.cn dd.website:before {
+              content: '官网';
+              width: 40px;
+              margin-left: -20px;
+            }
+            &.cn dd.document:before {
+              content: '白皮书';
+              width: 50px;
+              margin-left: -25px;
+            }
+          }
+        }
+      }
+      .function_events{
+        position: absolute;
+        top: 85px;
+        right: 90px;
+        >dl{
+          float: left;
+          &:last-child{
+            margin-left: 90px;
+          }
+          dt{
+            margin-bottom: 20px;
+          }
+          dd{
+            width: 180px;
+            height: 210px;
+            line-height: 32px;
+            padding: 10px 20px;
+            border: 1px solid #d9d9d9;
+            overflow: auto;
+            span{
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.en .contract-overview {
+    font-size: 13px;
+    ul li {
+      > b{
+        width: auto !important;
+        position: static;
+        margin-right: 1em;
+      }
+      > span {
+        padding-left: 0 !important;
+      }
+      .official-links {
+        transform: translate(-20px, -45px);
+      }
+    }
+  }
+}
