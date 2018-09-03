@@ -5,8 +5,41 @@
       justify-content: space-between;
       margin: 30px 50px 36px;
       font-size: 16px;
+      &-blocknum{
+        color: $color-link;
+      }
       >.ui-btn {
-        width: 120px;
+        width:120px;
+        height:36px;
+        background:rgba(21,20,22,1);
+        border-radius:8px;
+        color: #ffffff;
+        font-size: 12px;
+        padding: 0 10px;
+        border:none;
+        &:first-of-type:before{
+          content: '';
+          display: inline-block;
+          width:0;
+          height:0;
+          border-top:5px solid transparent;
+          border-bottom:5px solid transparent;
+          border-right:5px solid #ffffff;
+          margin-right: 10px;
+        }
+        &:last-of-type:after{
+          content: '';
+          display: inline-block;
+          width:0;
+          height:0;
+          border-top:5px solid transparent;
+          border-bottom: 5px solid transparent;
+          border-left: 5px solid #ffffff;
+          margin-left: 10px;
+        }
+        &:hover{
+          background:$color-link;
+        }
       }
     }
 

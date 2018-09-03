@@ -134,6 +134,23 @@ export default Vue.extend({
             // localStorage.TradePageNo = +pageNo;
             this.extended.pageNo = +pageNo;
             this.fetchTradeInfo();
-        }
+        },
+        // 去搜索结果页
+        searchResult(addr, acct){
+            let page = location.pathname;
+            if (page === '/index.html' || page === '/') {
+                if (/CON.+/.test(addr)) {
+                    location.href = './contract.html#/contractInfo/' + addr + '?cl=1';
+                } else {
+                    this.$router.push({name: 'searchResult', query: {fromAddress: addr, fromAcct: acct}})
+                }
+            } else if (page === '/contract.html') {
+                if (/CON.+/.test(addr)) {
+                    this.$router.push({name: 'contractInfo', params: {contract_id: addr}, query: {cl: 1}})
+                } else {
+                    location.href = './index.html#/searchResult?fromAddress=' + addr + '&fromAcct=' + acct;
+                }
+            }
+        },
     }
 });

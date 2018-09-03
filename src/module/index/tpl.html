@@ -25,48 +25,53 @@
             <div class="index-block-content">
                 <loading v-if="isLoadingBlock"></loading>
                 <section v-else>
-                    <ul class="index-block-content-list top-item">
-                        <li v-for="(item,index) in blockList0" :class="{'me-animated  fastDown':index==0}">
-                            <p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>
-                            <p class="item-2"> > {{item.block_elapsed_time}}</p>
-                            <p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>
-                            <p class="item-4"><span>{{item.trans_num}}</span> transactions</p>
-                        </li>
-                    </ul>
                     <ul class="index-block-content-list">
-                        <li v-for="(item,index) in blockList1" :class="{'me-animated  mefadeOutRight':index==0 ||index==1 ,'me-animated  mefadeOutDown':index==2}">
-                            <p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>
-                            <p class="item-2"> > {{item.block_elapsed_time}}</p>
-                            <p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>
-                            <p class="item-4"><span>{{item.trans_num}}</span> transactions</p>
-                        </li>
-                    </ul>
-                    
-                    <ul class="index-block-content-list">
-                        <li v-for="(item,index) in blockList2" :class="{'me-animated  mefadeOutDown':index==0,'me-animated  mefadeOutLeft':index==1 || index==2}">
-                            <p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>
-                            <p class="item-2"> > {{item.block_elapsed_time}}</p>
-                            <p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>
-                            <p class="item-4"><span>{{item.trans_num}}</span> transactions</p>
-                        </li>
-                    </ul>
+                        <li v-for="(item,index) in blockList">
+                            <div class="index-block-content-list-left">
+                                <p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>
+                                <p class="item-2"> > {{item.block_elapsed_time}}</p>
+                            </div>
+                            <div class="index-block-content-list-right">
+                                <p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>
+                                <p class="item-4"><span>{{item.trans_num}}</span> transactions</p>
+                            </div>
 
-                    <ul class="index-block-content-list">
-                        <li v-for="(item,index) in blockList3" :class="{'me-animated  mefadeOutRight':index==0 || index==1, 'me-animated  mefadeOutDown':index==2}">
-                            <p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>
-                            <p class="item-2"> > {{item.block_elapsed_time}}</p>
-                            <p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>
-                            <p class="item-4"><span>{{item.trans_num}}</span> transactions</p>
                         </li>
                     </ul>
-                    <ul class="index-block-content-list">
-                        <li v-for="(item,index) in blockList4" :class="{'me-animated  mefadeOutLeft': index==1 || index==2,'only-animated  fastLeft': index==0}">
-                            <p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>
-                            <p class="item-2"> > {{item.block_elapsed_time}}</p>
-                            <p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>
-                            <p class="item-4"><span>{{item.trans_num}}</span> transactions</p>
-                        </li>
-                    </ul>
+                    <!--<ul class="index-block-content-list">-->
+                        <!--<li v-for="(item,index) in blockList1" :class="{'me-animated  mefadeOutRight':index==0 ||index==1 ,'me-animated  mefadeOutDown':index==2}">-->
+                            <!--<p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>-->
+                            <!--<p class="item-2"> > {{item.block_elapsed_time}}</p>-->
+                            <!--<p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>-->
+                            <!--<p class="item-4"><span>{{item.trans_num}}</span> transactions</p>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                    <!---->
+                    <!--<ul class="index-block-content-list">-->
+                        <!--<li v-for="(item,index) in blockList2" :class="{'me-animated  mefadeOutDown':index==0,'me-animated  mefadeOutLeft':index==1 || index==2}">-->
+                            <!--<p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>-->
+                            <!--<p class="item-2"> > {{item.block_elapsed_time}}</p>-->
+                            <!--<p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>-->
+                            <!--<p class="item-4"><span>{{item.trans_num}}</span> transactions</p>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+
+                    <!--<ul class="index-block-content-list">-->
+                        <!--<li v-for="(item,index) in blockList3" :class="{'me-animated  mefadeOutRight':index==0 || index==1, 'me-animated  mefadeOutDown':index==2}">-->
+                            <!--<p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>-->
+                            <!--<p class="item-2"> > {{item.block_elapsed_time}}</p>-->
+                            <!--<p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>-->
+                            <!--<p class="item-4"><span>{{item.trans_num}}</span> transactions</p>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                    <!--<ul class="index-block-content-list">-->
+                        <!--<li v-for="(item,index) in blockList4" :class="{'me-animated  mefadeOutLeft': index==1 || index==2,'only-animated  fastLeft': index==0}">-->
+                            <!--<p class="item-1" @click="toBlockInfo(item.block_num)">{{ $tc("block",1) }} <span>{{item.block_num}}<span></p>-->
+                            <!--<p class="item-2"> > {{item.block_elapsed_time}}</p>-->
+                            <!--<p class="item-3" @click="toBlockAgent(item.signee)">{{ $t("agentOwner") }} <span>{{item.signee}}</span></p>-->
+                            <!--<p class="item-4"><span>{{item.trans_num}}</span> transactions</p>-->
+                        <!--</li>-->
+                    <!--</ul>-->
                 </section>
             </div>
         </section>

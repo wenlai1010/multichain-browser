@@ -23,7 +23,7 @@ export default Vue.extend({
                 pageSize: 10
             },
             pageNum: 0,
-
+            url: window.url,
             isLoading: true,
         }
     },
@@ -35,7 +35,10 @@ export default Vue.extend({
         window.scrollTo(0, 0);
     },
     watch: {
-
+        url(){
+            alert(123);
+            this.fetchBlockList();
+        }
     },
     methods: {
         /*

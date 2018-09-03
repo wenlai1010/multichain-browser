@@ -15,8 +15,8 @@ export default {
      * @param param:keyword
      * @returns {*}
      */
-    queryType(url,param = {}) {
-        return ajax.get(url,'/Query.Type',param);
+    queryType(param = {}) {
+        return ajax.get('/Query.Type',param);
     },
     /**
      * 搜索币种类型查询
@@ -109,7 +109,7 @@ export default {
 
             function loop() {
                 isRequesting = true;
-                that.LoopBlockList({page: 1, per_page: 13}).always((rep) => {
+                that.LoopBlockList({page: 1, per_page: 7}).always((rep) => {
                     isRequesting = false;
                     callbacks.forEach((callback, index) => {
                         callback.call(that, rep);

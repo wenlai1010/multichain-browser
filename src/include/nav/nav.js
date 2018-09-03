@@ -3,7 +3,9 @@
  * @auth jinguangguo
  * @date 2016/10/18
  */
+import Config from '../../config/config';
 
+window.url = Config.baseUriAchain;
 
 $(function () {
     // let lang = window.sessionStorage.getItem('LANG')? window.sessionStorage.getItem('LANG') : 'en';
@@ -16,8 +18,26 @@ $(function () {
         $module.find('.js-nav').click(function (e) {
             e.preventDefault();
             // 页面间的跳转
-            window.location.href = $(this).data('href');
+            // window.location.href = $(this).data('href');
+            $('.js-selected').css('visibility','hidden');
+            $(this).find('i').css('visibility','visible');
+            $('.blockchain-nav').text($(this).text());
+            if($(this).data('href') == 'selfsell'){
+                $('#logo').attr('src','../img/selfsell-logo.png');
+            }else{
+                $('#logo').attr('src','../img/achain-logo.png');
+            }
+
         });
+        $("#logoHref").click(function(){
+            if($('#logo').attr('src').indexOf('ssc') >= 0){
+                $('#logo').attr('src','../img/selfsell-logo.png');
+            }else{
+                $('#logo').attr('src','../img/achain-logo.png');
+            }
+
+        });
+
     }
     // $('.js-lang').click(function(e) {
     //     // 获取当前页面

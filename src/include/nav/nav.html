@@ -1,7 +1,7 @@
 <nav class="layout-nav">
     <div class="nav-wrapper fn-clearfix">
-        <a class="left" href="https://www.selfsell.com/">
-            <img class="img" src="./img/achain-logo.png" width="120"  alt="logo">
+        <a class="left" id="logoHref" href="javascript:void(0);">
+            <img class="img" src="./img/achain-logo.png" width="120"  alt="logo" id="logo">
         </a>
         <div class="right">
             <div class="menu">
@@ -35,8 +35,8 @@
                         <div>
                             <!--<span></span>-->
                             <dl>
-                                <dd><a class="js-nav"></a></dd>
-                                <dd><a class="js-nav"></a></dd>
+                                <dd @click="changeMenu('achain')" data-href="achain" class="js-nav"><a><i class="js-selected" style="visibility: visible"></i>Achain浏览器</a></dd>
+                                <dd @click="changeMenu('ssc')" data-href="selfsell" class="js-nav"><a><i class="js-selected"></i>SelfSell浏览器</a></dd>
                                 <!--<dd><a data-href="./index.html#/ranking/SSC" class="blockchain-ranking-nav js-nav"></a></dd>-->
                             </dl>
                         </div>

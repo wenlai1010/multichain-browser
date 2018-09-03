@@ -25,6 +25,7 @@ export default Vue.extend({
             searchTxt : '',
             isHover:false,
             dealList: [],
+            blockList: [],
             blockList0 : [],
             blockList1 : [],
             blockList2 : [],
@@ -99,6 +100,7 @@ export default Vue.extend({
                         // window.toast(this.$t('noData'));
                         return;
                     }
+                    this.blockList = rep.result.dataList;
                     (rep.result.dataList.length) && rep.result.dataList.forEach((item,index)=>{
                         if(index==0){
                              this.blockList0[index] = item;

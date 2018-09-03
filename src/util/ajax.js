@@ -7,6 +7,7 @@
 const DEFAULT_TYPE = 'POST';
 const DEFAULT_TIMEOUT = 30000;
 
+
 let errorMsg = {
     // zh: {
     //     networkErr: '网络异常，请稍后再试',
@@ -68,12 +69,12 @@ export default {
      * @param params
      * @returns {*}
      */
-    post(url,method, param = {}, formData, isFormData) {
+    post(method, param = {}, formData, isFormData) {
         let deferred = $.Deferred();
 
         $.ajax({
-            url: (url || '/api/browser/ssc') + method,
-            // url:  '//172.16.15.7:8340/api/browser/ssc'+ method,
+            // url: (url || '/api/browser/ssc') + method,
+            url:  window.url + method,
             data: isFormData ? formData : JSON.stringify(param),
             type: 'POST',
             dataType: 'JSON',
@@ -106,12 +107,12 @@ export default {
      * @param param
      * @param showError
      */
-    get(url,method, param={}) {
+    get(method, param={}) {
         let deferred = $.Deferred();
 
         $.ajax({
-            url: (url || '/api/browser/ssc')+ method,
-            // url:  '//172.16.15.7:8340/api/browser/ssc'+ method,
+            // url: (url || '/api/browser/ssc')+ method,
+            url:  window.url + method,
             data: $.param(param),
             type: 'GET',
             headers: {

@@ -4,6 +4,11 @@
                 <div class="block-id">
                     {{ $tc('transac') }}(ID)：<span>{{tradeId}}</span>
                 </div>
+                <div style="width: 90%;margin: 0 auto;border-bottom: 1px solid #eeeeee;padding-bottom: 50px;text-align: center;margin-top: 15px;font-size: 13px;color: #6C71FF;">
+                    <a @click="searchResult(trade.from_addr,'')" >{{trade.from_addr}}</a>
+                    <img src="../img/arrow.png" alt="" style="margin-left: 15px;margin-right: 15px;vertical-align: bottom;">
+                    <a @click="searchResult(trade.to_addr, '')">{{trade.to_addr}}</a>
+                </div>
                 <div class="m-block-content">
                     <div class="m-review" v-if="isLoading">
                         <loading></loading>
@@ -11,11 +16,11 @@
                     <div class="m-review" v-else>
                         <div class="review-cont">
                             <div class="review-cont-left" style="width: 540px">
-                                <div class="cont-item">
-                                    <span class="item-title">{{ $t('transacInitiator') }}:</span>
-                                    <a class="item-info" @click="searchResult(trade.from_addr,trade.from_acct)" v-if="trade.from_acct">{{trade.from_acct}}</a>
-                                    <a class="item-info" @click="searchResult(trade.from_addr,'')" v-else>{{trade.from_addr}}</a>
-                                </div>
+                                <!--<div class="cont-item">-->
+                                    <!--<span class="item-title">{{ $t('transacInitiator') }}:</span>-->
+                                    <!--<a class="item-info" @click="searchResult(trade.from_addr,trade.from_acct)" v-if="trade.from_acct">{{trade.from_acct}}</a>-->
+                                    <!--<a class="item-info" @click="searchResult(trade.from_addr,'')" v-else>{{trade.from_addr}}</a>-->
+                                <!--</div>-->
                                 <div class="cont-item">
                                     <span class="item-title">{{ $t('transacType') }}: </span>
                                     <span class="item-info">{{trade.trx_type}}</span></div>
@@ -36,12 +41,12 @@
                                         <span class="item-info">{{trade.event_type}}</span></div>
                             </div>
                             <div class="review-cont-right" style="width: 540px">
-                                <div class="cont-item">
-                                    <span class="item-title ">{{ $t('transacRecipient') }}: </span>
-                                    <a class="item-info" @click="searchResult(trade.to_addr,trade.to_acct)" v-if="trade.to_acct">{{trade.to_acct}}</a>
-                                    <a class="item-info" @click="searchResult(trade.to_addr,'')" v-else-if="trade.to_addr">{{trade.to_addr}}</a>
-                                    <a class="item-info" @click="searchResult(trade.contract_id,'')" v-else>{{trade.contract_id}}</a>
-                                </div>
+                                <!--<div class="cont-item">-->
+                                    <!--<span class="item-title ">{{ $t('transacRecipient') }}: </span>-->
+                                    <!--<a class="item-info" @click="searchResult(trade.to_addr,trade.to_acct)" v-if="trade.to_acct">{{trade.to_acct}}</a>-->
+                                    <!--<a class="item-info" @click="searchResult(trade.to_addr,'')" v-else-if="trade.to_addr">{{trade.to_addr}}</a>-->
+                                    <!--<a class="item-info" @click="searchResult(trade.contract_id,'')" v-else>{{trade.contract_id}}</a>-->
+                                <!--</div>-->
                                 <div class="cont-item">
                                     <span class="item-title">{{ $t('transacAmount') }}: </span>
                                     <span class="item-info">{{trade.coin_type ? +trade.amount + ' ' + trade.coin_type : '--'}}</span></div>
@@ -50,7 +55,7 @@
                                     <span class="item-info">{{ trade.transResult }}</span></div>
                                 <div class="cont-item">
                                     <span class="item-title ">{{ $t('blockHeight') }}: </span>
-                                    <a class="item-info" @click="toBlockInfo(trade.block_num)">{{trade.block_num}}</a></div>
+                                    <a class="item-info" style="color: #010101;" @click="toBlockInfo(trade.block_num)">{{trade.block_num}}</a></div>
                                 <div class="cont-item">
                                     <span class="item-title">{{ $t('transacNote') }}: </span>
                                     <span class="item-info">{{trade.memo}}</span></div>

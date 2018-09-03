@@ -357,17 +357,20 @@
 
 .me-deal-list{
     min-height: $height-table-min;
+    padding-bottom: 35px;
     .me-deal-ul{
-        width: 100%;
+        width: 95%;
+        margin: 0 auto;
         background-color: #fff;
-        border-bottom: 1px solid #ededed;
-        padding: 5px 0 5px 14px;
+        box-shadow:0px 2px 7px 1px rgba(203,203,203,0.2);
+        //padding: 5px 0 5px 14px;
+        margin-top: 20px;
     }
     .me-deal-ul-hover:hover{
         background-color: #f7f7f7;
     }
     .me-deal-ul-hover{
-        padding: 10px 0 7px 10px;
+        padding: 15px 0 10px 10px;
     }
 
     .me-deal-ul:first-of-type{
@@ -386,6 +389,7 @@
             color: #000;
             font-size: 12px;
             display: inline-block;
+            font-weight: 700;
         }
     }
 
@@ -394,13 +398,26 @@
         margin-top: 8px;
         margin-bottom: 8px;
         a{
-            color: $color-link;
+            color: #666666;
+            font-size: 12px;
         }
     }
+    .me-deal-arrow{
+        display: inline-block;
+        width: 34px;
+        height: 24px;
+        background-image: url('../img/deal-arrow.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        vertical-align: bottom;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
     .me-deal-item{
-        margin-left: 12px;
+        margin-left: 60px;
         >span{
             font-weight: 700;
+            font-size: 12px;
         }
     }
     .me-deal-right{
@@ -410,6 +427,7 @@
             font-size: 12px;
             color: $color-font-gray;
             text-align: right;
+            margin-right: 10px;
         }
     }
 }

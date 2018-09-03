@@ -1,19 +1,19 @@
 <div class="module-searchResult">
     <div class="comp-block cont-center">
         <div class="block-id">
-            <span class="acct-tips">{{ $t('accountAddr') }}：</span><span>{{acct_address}}</span>&nbsp;&nbsp;<span
+            <span class="acct-tips" style="font-weight: 300;">{{ $t('accountAddr') }}：</span><span>{{acct_address}}</span>&nbsp;&nbsp;<span
                 v-if="acct_name">({{acct_name}})</span>
         </div>
-        <div class="m-block-content balance" v-if="balanceList.length">
-            <h2 class="balance-title" v-text="$t('accountBalc')+':'"></h2>
-            <ul class="balance-list" :class="{'collapse': !isActive}">
-                <li v-for=" balance in balanceList">{{balance.balance}} {{balance.coinType.replace(/JRT/i,'JR10')}}</li>
-            </ul>
-            <!-- <div class="balance-btns">
-                <span class="morebtn" v-if="hasMore" @click="toMore">{{ btnContext }}<span class="tip" v-text="$t('addressTip')"></span></span>
-                <span class="morebtn disabled" v-else>Tip<span class="tip" v-text="$t('addressTip')"></span></span>
-            </div> -->
-        </div>
+        <!--<div class="m-block-content balance" v-if="balanceList.length">-->
+            <!--<h2 class="balance-title" v-text="$t('accountBalc')+':'"></h2>-->
+            <!--<ul class="balance-list" :class="{'collapse': !isActive}">-->
+                <!--<li v-for=" balance in balanceList">{{balance.balance}} {{balance.coinType.replace(/JRT/i,'JR10')}}</li>-->
+            <!--</ul>-->
+            <!--&lt;!&ndash; <div class="balance-btns">-->
+                <!--<span class="morebtn" v-if="hasMore" @click="toMore">{{ btnContext }}<span class="tip" v-text="$t('addressTip')"></span></span>-->
+                <!--<span class="morebtn disabled" v-else>Tip<span class="tip" v-text="$t('addressTip')"></span></span>-->
+            <!--</div> &ndash;&gt;-->
+        <!--</div>-->
     </div>
     <div class="m-block-content">
         <div class="m-review">

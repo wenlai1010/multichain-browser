@@ -21,28 +21,47 @@
                 </span>
             </div> -->
             <div class="me-deal-ul-hover  fn-clearfix">
-                <img class="me-deal-logo" src="../img/deal-item.png" alt="">
-                <section class="me-deal-left">
-                    <a @click="toTradeInfo(item.trx_id)">{{item.trx_id_last}}</a>
+                <div class="fn-clearfix">
+                    <img class="me-deal-logo" src="../img/deal-item.png" alt="">
+                    <section class="me-deal-left">
+                        <a @click="toTradeInfo(item.trx_id)">{{item.trx_id_last}}</a>
+                    <span class="me-deal-item">
+                        <span v-if="item.coinType"> {{item.amount + ' ' + item.coinType}}</span>
+                        <i v-else>--</i>
+                    </span>
+                        <!--<div class="me-deal-trade">-->
+                        <!--<span>From </span>-->
+                        <!--<span class="trade-from">-->
+                        <!--<a @click="searchResult(item.from_addr,'')" v-if="!item.from_acct_last">{{item.from_addr_last}}</a>-->
+                        <!--<a @click="searchResult(item.from_addr, item.from_acct_last)" v-else>{{item.from_acct_last}}</a>-->
+                        <!--</span>-->
+                        <!--<span> To </span>-->
+                        <!--<span class="trade-to">-->
+                        <!--<a @click="searchResult(item.to_addr, '')" v-if="!item.to_acct_last">{{item.to_addr_last}}</a>-->
+                        <!--<a @click="searchResult(item.to_addr, item.to_acct)" v-else>{{item.to_acct_last}}</a>-->
+                        <!--</span>-->
+                        <!--</div>-->
+
+                        <!--<p class="me-deal-item">Amount&nbsp;&nbsp;-->
+                        <!--<span v-if="item.coinType"> {{item.amount + ' ' + item.coinType}}</span>-->
+                        <!--<i v-else>&#45;&#45;</i>-->
+                        <!--</p>-->
+                    </section>
+                    <p class="me-deal-right gray-data"> > {{item.trx_elapsed_time}}</p>
+                </div>
+                <div>
                     <div class="me-deal-trade">
-                        <span>From </span>
                         <span class="trade-from">
-                            <a @click="searchResult(item.from_addr,'')" v-if="!item.from_acct_last">{{item.from_addr_last}}</a>
-                            <a @click="searchResult(item.from_addr, item.from_acct_last)" v-else>{{item.from_acct_last}}</a>
+                        <a @click="searchResult(item.from_addr,'')" v-if="!item.from_acct_last">{{item.from_addr_last}}</a>
+                        <a @click="searchResult(item.from_addr, item.from_acct_last)" v-else>{{item.from_acct_last}}</a>
                         </span>
-                        <span> To </span>
+                        <i class="me-deal-arrow"></i>
                         <span class="trade-to">
-                            <a @click="searchResult(item.to_addr, '')" v-if="!item.to_acct_last">{{item.to_addr_last}}</a>
-                            <a @click="searchResult(item.to_addr, item.to_acct)" v-else>{{item.to_acct_last}}</a>
+                        <a @click="searchResult(item.to_addr, '')" v-if="!item.to_acct_last">{{item.to_addr_last}}</a>
+                        <a @click="searchResult(item.to_addr, item.to_acct)" v-else>{{item.to_acct_last}}</a>
                         </span>
                     </div>
-
-                    <p class="me-deal-item">Amount&nbsp;&nbsp;
-                          <span v-if="item.coinType"> {{item.amount + ' ' + item.coinType}}</span>
-                          <i v-else>--</i>
-                    </p>
-                </section>
-                <p class="me-deal-right gray-data">{{item.trx_elapsed_time}}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -71,10 +90,10 @@
                 let arr = this.dealList;
                 arr.forEach(function (deal, index) {
                     // if(deal.from_addr&&deal.from_addr.length>=10){
-                        arr[index].from_addr_last = deal.from_addr.substr(0,10)+"...";
+                        arr[index].from_addr_last = deal.from_addr.substr(0,20)+"...";
                     // }
                     // if(deal.to_addr&&deal.to_addr.length>=12){
-                        arr[index].to_addr_last = deal.to_addr.substr(0,12)+"...";
+                        arr[index].to_addr_last = deal.to_addr.substr(0,15)+"...";
                     // }
                     // if(deal.trx_id&&deal.trx_id.length>=18){
                         arr[index].trx_id_last = deal.trx_id.substr(0,18)+"......";

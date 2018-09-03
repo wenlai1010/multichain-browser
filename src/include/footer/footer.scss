@@ -5,10 +5,12 @@
  */
 
 .layout-footer {
-    background: #000;
-    height: 420px;
+    //background: #000;
+    //height: 420px;
     text-align: center;
-    color: #fff;
+    color: #BBBBBB;
+    font-size: 14px;
+    line-height: 100px;
     &-link{
         padding-top: 106px;
         display: flex;

@@ -9,14 +9,14 @@
         </div>
         <div v-for="item in fliterDealList" class="mall-deal-tr">
             <span style="width: 27.34%" class="mall-deal-item">
-                <a class="mall-deal-item-underline" @click="toTradeInfo(item.trx_id)">{{item.trx_id_last}}</a>
+                <a class="mall-deal-item-underline" @click="toTradeInfo(item.trx_id)" style="color: #010101;">{{item.trx_id_last}}</a>
             </span>
             <span style="width: 25.33%" class="mall-deal-item gray-data">{{item.trx_time|locale-time}}</span>
             <span class="trade-from mall-deal-item" style="width: 9.33%">
                 <a @click="searchResult(item.from_addr,'')" v-if="!item.from_acct_last">{{item.from_addr_last}}</a>
                 <a @click="searchResult(item.from_addr, item.from_acct)" v-else>{{item.from_acct_last}}</a>
             </span>
-            <span class="trade-arrow mall-deal-item" style="width: 6.17%"><img src="img/arrow.png" alt=""></span>
+            <span class="trade-arrow mall-deal-item" style="width: 6.17%;text-align: center;"><img src="img/deal-arrow.png" alt=""></span>
             <span class="trade-to mall-deal-item" style="width: 14.33%">
                 <a @click="searchResult(item.to_addr, '')" v-if="!item.to_acct_last">{{item.to_addr_last}}</a>
                 <a @click="searchResult(item.to_addr, item.to_acct)" v-else>{{item.to_acct_last}}</a>
@@ -49,8 +49,8 @@
                 let vm = this;
                 let arr = this.dealList;
                 arr.forEach(function (deal, index) {
-                    arr[index].from_addr_last = deal.from_addr.substr(0,8)+"...";
-                    arr[index].to_addr_last = deal.to_addr.substr(0,8)+"...";
+                    arr[index].from_addr_last = deal.from_addr.substr(0,15)+"...";
+                    arr[index].to_addr_last = deal.to_addr.substr(0,15)+"...";
                     arr[index].trx_id_last = deal.trx_id.substr(0,21)+"......";
                     deal.coinType = deal.coinType=='JRT'?'JR10':deal.coinType;
                     let dtype = deal.trx_type;

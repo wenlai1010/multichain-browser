@@ -7,6 +7,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueI18n from 'vue-i18n'
 import messages from '../module/index/lang';
+import Config from '../config/config';
 
 import './base/init';
 import Loading from '../component/Loading.vue';
@@ -19,6 +20,7 @@ import BlockList from '../module/index/blockList/main'
 import DealList from '../module/index/dealList/main'
 import Ranking from '../module/index/ranking/main'
 // import ContractInfo from '../module/index/contractInfo/main'
+
 
 Vue.use(VueI18n);
 
@@ -92,10 +94,25 @@ const app = new Vue({
     },
     created() {
         this.changeMenu();
+        this.getPath();
     },
+    mounted(){
+        let that = this;
+        $("#logoHref").click(function(){
+            that.$router.push('/');
+            if($('#logo').attr('src').indexOf('ssc') >= 0){
+                $('#logo').attr('src','../img/selfsell-logo.png');
+            }else{
+                $('#logo').attr('src','../img/achain-logo.png');
+            }
 
+        });
+    },
+    watch: {
+        '$route':'getPath'
+    },
     methods: {
-        changeMenu() {
+        changeMenu(key) {
             $('.home-nav').text(this.$t('home'));
             // $('.blockchain-nav').text(this.$t('blockchain'));
             $('.blockchain-blockList-nav').text(this.$t('blockList'));
@@ -104,10 +121,30 @@ const app = new Vue({
             // $('.wallet-broadcast-nav').text(this.$t('walletBroadcast'));
             // $('.corp-mail').text(this.$t('corpMail'));
             // $('.site-lang').text(this.$t('lang'));
-            document.title = this.$t('siteTitle');
+            document.title = this.$t('siteTitleSsc');
 
 
             $('.blockchain-nav').text(this.$t('achain'));
+            if(key == 'ssc'){
+                window.url = Config.baseUriSsc;
+                document.title = this.$t('siteTitleSsc');
+                var linkEle = document.getElementById("link1");
+
+                linkEle.href = '../img/favicon.ico';
+                this.$nextTick();
+            }else{
+                window.url = Config.baseUriAchain;
+                document.title = this.$t('siteTitleAchain');
+                var linkEle = document.getElementById("link1");
+
+                linkEle.href = '../img/favicon-a.ico';
+                this.$nextTick();
+            }
         },
+        getPath(){
+            if(this.$route.path.length > 1){
+                $('.layout-nav').addClass("layout-nav-black");
+            }
+        }
     }
 }).$mount('#app');

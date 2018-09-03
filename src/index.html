@@ -8,8 +8,9 @@
 {% endblock %}
 
 {% block content %}
+
 {% include "./include/nav/nav.html" with {page: "index"}%}
- 
+
 <router-view :class="window.app.LANG">
     <div class="layout-loading" style="background-color: inherit;">
         <div class="m-loading">
