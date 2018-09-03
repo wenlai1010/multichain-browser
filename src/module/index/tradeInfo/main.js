@@ -35,6 +35,17 @@ export default Vue.extend({
             // contractList:{}
         }
     },
+    computed: {
+        localUrl() {
+            window.url = this.$store.state.localUrl;
+            return this.$store.state.localUrl;
+        }
+    },
+    watch: {
+        localUrl() {
+            this.fetchTradeInfo();
+        }
+    },
     created() {
         this.fetchTradeInfo();
     },

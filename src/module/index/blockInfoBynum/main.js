@@ -37,7 +37,12 @@ export default Vue.extend({
             isLoadingDeal: true,
         }
     },
-
+    computed: {
+        localUrl() {
+            window.url = this.$store.state.localUrl;
+            return this.$store.state.localUrl;
+        }
+    },
     created() {
         this.fetchBlockInfo();
         // this.getMaxBlockNum();
@@ -48,6 +53,9 @@ export default Vue.extend({
     watch:{
         '$route.params.blockNum'(val,oldVal){
             this.tradeList = [];
+            this.fetchBlockInfo();
+        },
+        localUrl() {
             this.fetchBlockInfo();
         }
     },

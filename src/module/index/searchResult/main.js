@@ -38,6 +38,18 @@ export default Vue.extend({
             isLoading: false,
         }
     },
+    computed: {
+        localUrl() {
+            window.url = this.$store.state.localUrl;
+            return this.$store.state.localUrl;
+        }
+    },
+    watch: {
+        localUrl() {
+            this.fetchBalance();
+            this.fetchTradeInfo();
+        }
+    },
     created() {
         this.fetchBalance();
         this.fetchTradeInfo();

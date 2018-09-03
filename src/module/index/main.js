@@ -37,6 +37,18 @@ export default Vue.extend({
 
         }
     },
+    computed: {
+        localUrl() {
+            window.url = this.$store.state.localUrl;
+            return this.$store.state.localUrl;
+        }
+    },
+    watch: {
+        localUrl() {
+            this.renderBlockList();
+            this.renderDealList();
+        }
+    },
     created() {
         window.scrollTo(0,0);
         this.renderBlockList();

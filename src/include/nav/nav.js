@@ -29,14 +29,6 @@ $(function () {
             }
 
         });
-        $("#logoHref").click(function(){
-            if($('#logo').attr('src').indexOf('ssc') >= 0){
-                $('#logo').attr('src','../img/selfsell-logo.png');
-            }else{
-                $('#logo').attr('src','../img/achain-logo.png');
-            }
-
-        });
 
     }
     // $('.js-lang').click(function(e) {

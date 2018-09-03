@@ -4,6 +4,7 @@
 
 
 import Vue from 'vue';
+import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import VueI18n from 'vue-i18n'
 import messages from '../module/index/lang';
@@ -21,8 +22,10 @@ import DealList from '../module/index/dealList/main'
 import Ranking from '../module/index/ranking/main'
 // import ContractInfo from '../module/index/contractInfo/main'
 
+import store from '../module/index/store';
 
 Vue.use(VueI18n);
+Vue.use(Vuex);
 
 let i18n =  new VueI18n({
     locale: window.app.LANG,
@@ -85,10 +88,10 @@ const router = new VueRouter({
     ]
 });
 
-
 const app = new Vue({
     router,
     i18n,
+    store,
     components: {
         Loading,
     },
@@ -100,12 +103,6 @@ const app = new Vue({
         let that = this;
         $("#logoHref").click(function(){
             that.$router.push('/');
-            if($('#logo').attr('src').indexOf('ssc') >= 0){
-                $('#logo').attr('src','../img/selfsell-logo.png');
-            }else{
-                $('#logo').attr('src','../img/achain-logo.png');
-            }
-
         });
     },
     watch: {
@@ -121,25 +118,40 @@ const app = new Vue({
             // $('.wallet-broadcast-nav').text(this.$t('walletBroadcast'));
             // $('.corp-mail').text(this.$t('corpMail'));
             // $('.site-lang').text(this.$t('lang'));
-            document.title = this.$t('siteTitleSsc');
 
-
-            $('.blockchain-nav').text(this.$t('achain'));
-            if(key == 'ssc'){
-                window.url = Config.baseUriSsc;
+            if(window.url.indexOf('ssc') >= 0){
                 document.title = this.$t('siteTitleSsc');
                 var linkEle = document.getElementById("link1");
 
                 linkEle.href = '../img/favicon.ico';
-                this.$nextTick();
+                $('#logo').attr('src','../img/selfsell-logo.png');
+                $('.blockchain-nav').text(this.$t('selfsell'));
             }else{
-                window.url = Config.baseUriAchain;
+                $('.blockchain-nav').text(this.$t('achain'));
                 document.title = this.$t('siteTitleAchain');
                 var linkEle = document.getElementById("link1");
 
                 linkEle.href = '../img/favicon-a.ico';
-                this.$nextTick();
+                $('#logo').attr('src','../img/achain-logo.png');
             }
+
+
+
+            if(key == 'ssc'){
+                this.$store.commit('changeUrl',Config.baseUriSsc);
+                document.title = this.$t('siteTitleSsc');
+                var linkEle = document.getElementById("link1");
+
+                linkEle.href = '../img/favicon.ico';
+            }else{
+                this.$store.commit('changeUrl',Config.baseUriAchain)
+                document.title = this.$t('siteTitleAchain');
+                var linkEle = document.getElementById("link1");
+
+                linkEle.href = '../img/favicon-a.ico';
+            }
+
+
         },
         getPath(){
             if(this.$route.path.length > 1){

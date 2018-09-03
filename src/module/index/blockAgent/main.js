@@ -35,6 +35,17 @@ export default Vue.extend({
             isLoading:true,
         }
     },
+    computed: {
+        localUrl() {
+            window.url = this.$store.state.localUrl;
+            return this.$store.state.localUrl;
+        }
+    },
+    watch: {
+        localUrl() {
+            this.fetchBlockList();
+        }
+    },
     created() {
         this.fetchBlockList();
     },

@@ -27,18 +27,22 @@ export default Vue.extend({
             isLoading: true,
         }
     },
-
+    computed: {
+        localUrl() {
+            window.url = this.$store.state.localUrl;
+            return this.$store.state.localUrl;
+        }
+    },
+    watch: {
+        localUrl() {
+            this.fetchBlockList();
+        }
+    },
     created() {
         this.fetchBlockList();
     },
     mounted(){
         window.scrollTo(0, 0);
-    },
-    watch: {
-        url(){
-            alert(123);
-            this.fetchBlockList();
-        }
     },
     methods: {
         /*
