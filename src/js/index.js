@@ -38,11 +38,12 @@ const router = new VueRouter({
             name: 'index',
             component: Index,
             beforeEnter(to, from, next){
-                if(from.path != '/'){
-                  window.location.href="./index.html";
-                }else{
+                // if(from.path != '/'){
+                  // window.location.href="./index.html";
+                // }else{
                     next();
-                }
+                // }
+
             }
         },
         {
@@ -150,12 +151,12 @@ const app = new Vue({
 
                 linkEle.href = '../img/favicon-a.ico';
             }
-
-
         },
         getPath(){
             if(this.$route.path.length > 1){
                 $('.layout-nav').addClass("layout-nav-black");
+            }else{
+                $('.layout-nav').removeClass("layout-nav-black");
             }
         }
     }
