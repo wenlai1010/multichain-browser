@@ -23,9 +23,9 @@ $(function () {
             $(this).find('i').css('visibility','visible');
             $('.blockchain-nav').text($(this).text());
             if($(this).data('href') == 'selfsell'){
-                $('#logo').attr('src','../img/selfsell-logo.png');
+                $('#logo').attr('src','./img/selfsell-logo.png');
             }else{
-                $('#logo').attr('src','../img/achain-logo.png');
+                $('#logo').attr('src','./img/achain-logo.png');
             }
 
         });

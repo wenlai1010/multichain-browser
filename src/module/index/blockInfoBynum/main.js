@@ -35,6 +35,7 @@ export default Vue.extend({
             isLastBlock: false,
             isLoadingInfo: true,
             isLoadingDeal: true,
+            coinType: window.url.indexOf('achain') >= 0 ? 'ACT' : 'SSC'
         }
     },
     computed: {

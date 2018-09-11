@@ -4,7 +4,7 @@
 
 
 import Vue from 'vue';
-import Vuex from 'vuex';
+// import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import VueI18n from 'vue-i18n'
 import messages from '../module/index/lang';
@@ -25,7 +25,7 @@ import Ranking from '../module/index/ranking/main'
 import store from '../module/index/store';
 
 Vue.use(VueI18n);
-Vue.use(Vuex);
+// Vue.use(Vuex);
 
 let i18n =  new VueI18n({
     locale: window.app.LANG,
@@ -124,16 +124,16 @@ const app = new Vue({
                 document.title = this.$t('siteTitleSsc');
                 var linkEle = document.getElementById("link1");
 
-                linkEle.href = '../img/favicon.ico';
-                $('#logo').attr('src','../img/selfsell-logo.png');
+                linkEle.href = './img/favicon.ico';
+                $('#logo').attr('src','./img/selfsell-logo.png');
                 $('.blockchain-nav').text(this.$t('selfsell'));
             }else{
                 $('.blockchain-nav').text(this.$t('achain'));
                 document.title = this.$t('siteTitleAchain');
                 var linkEle = document.getElementById("link1");
 
-                linkEle.href = '../img/favicon-a.ico';
-                $('#logo').attr('src','../img/achain-logo.png');
+                linkEle.href = './img/favicon-a.ico';
+                $('#logo').attr('src','./img/achain-logo.png');
             }
 
 
@@ -143,13 +143,13 @@ const app = new Vue({
                 document.title = this.$t('siteTitleSsc');
                 var linkEle = document.getElementById("link1");
 
-                linkEle.href = '../img/favicon.ico';
+                linkEle.href = './img/favicon.ico';
             }else{
                 this.$store.commit('changeUrl',Config.baseUriAchain)
                 document.title = this.$t('siteTitleAchain');
                 var linkEle = document.getElementById("link1");
 
-                linkEle.href = '../img/favicon-a.ico';
+                linkEle.href = './img/favicon-a.ico';
             }
         },
         getPath(){

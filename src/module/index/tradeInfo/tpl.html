@@ -29,7 +29,7 @@
                                     <a class="item-info" @click="searchResult(trade.contract_id,'')">{{trade.contract_id}}</a></div>
                                 <div class="cont-item">
                                     <span class="item-title">{{ $t('blockCommission') }}: </span>
-                                    <span class="item-info">{{trade.fee}} SSC</span></div>
+                                    <span class="item-info">{{trade.fee}} {{coinType}}</span></div>
                                 <div class="cont-item">
                                     <span class="item-title">{{ $t('confirmTime') }}:  </span>
                                     <span class="item-info">{{trade.trx_time|locale-time}}</span></div>
@@ -90,7 +90,7 @@
                                     </td> -->
                                     <td><a class="item-info" @click="searchResult(trade.fromAddr,'')">{{trade.fromAddr}}</a></td>
                                     <td><a class="item-info" @click="searchResult(trade.toAddr,'')">{{trade.toAddr}}</a></td>
-                                    <td>{{trade.amount}} SSC</td>
+                                    <td>{{trade.amount}} {{coinType}}</td>
                                 </tr>
                                 </tbody>
                             </table>

@@ -47,6 +47,7 @@ export default {
             async: true,
             timeout: DEFAULT_TIMEOUT,
             success: function (rep) {
+                console.log('ajax5:',rep);
                 if (rep.error) {
                     // 报错了
                     deferred.rejectWith(this, [errorMsg[window.app.LANG].networkErr]);
@@ -85,7 +86,9 @@ export default {
             async: true,
             timeout: DEFAULT_TIMEOUT,
             success: function (rep) {
+                console.log('ajax1:',rep);
                 if (rep.error) {
+                    console.log('ajax2:',rep);
                     // 报错了
                     deferred.rejectWith(this, ['Network exception, please try again later']);
                 } else {
@@ -93,7 +96,7 @@ export default {
                     deferred.resolveWith(this, [rep]);
                 }
             },
-            error: function (xhr, type) {
+            error: function (xhr, type) {console.log('ajax3:',rep);
                 deferred.rejectWith(this, ['Network exception, please try again later']);
             }
         });
@@ -125,6 +128,7 @@ export default {
                 deferred.resolveWith(this, [rep]);
             },
             error(xhr, type) {
+                console.log('ajax4:',xhr,type);
                 deferred.rejectWith(this, ['Network exception, please try again later']);
             }
         });

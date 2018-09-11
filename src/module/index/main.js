@@ -106,6 +106,7 @@ export default Vue.extend({
         renderBlockList(){
             this.isLoadingBlock = false;
             commonService.onLoopBlockList((rep)=>{
+                console.log('success:',rep);
                 this.isLoadingBlock = false;
                 if(rep.code==200){
                     if(!rep.result.dataList.length){
@@ -156,6 +157,8 @@ export default Vue.extend({
                 }else if(rep.msg){
                     window.error(rep.msg);
                 }
+            },err=>{
+                console.log('err...:',err);
             })
         },
 

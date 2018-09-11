@@ -7,7 +7,7 @@
             <ul v-else>
                 <li><b>{{ $t('contractName') }}: </b><span>{{info.name}}</span></li>
                 <li><b>{{ $t('contractStatus') }}: </b><span>{{info.status}}</span></li>
-                <li><b>{{ $t('contractBalance') }}: </b><span>{{+info.balance}} SSC</span></li>
+                <li><b>{{ $t('contractBalance') }}: </b><span>{{+info.balance}} {{coinType}}</span></li>
                 <li><b>{{ $t('registTime') }}: </b><span>{{info.regTime|locale-time}}</span></li>
                 <li>
                     <b>{{ $t('contractOwner') }}: </b>

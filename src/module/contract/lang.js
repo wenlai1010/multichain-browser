@@ -172,6 +172,11 @@ export default {
         broadcastFail: 'Fail to broadcast',
         broadcastWrongCode: 'Invalid image code',
         fillMessage: 'Please enter your signature message',
-        noImageCode: 'Please enter the image code'
+        noImageCode: 'Please enter the image code',
+        //多链浏览器
+        achain:'Achain浏览器',
+        selfsell: 'SelfSell浏览器',
+        siteTitleSsc: 'SSC Block Chain Browser',
+        siteTitleAchain: 'Achain Block Chain Browser',
     }
 }

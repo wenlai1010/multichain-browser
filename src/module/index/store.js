@@ -5,7 +5,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Config from '../../config/config';
 
-// Vue.use(Vuex);
 
 export default new Vuex.Store({
     strict: true,

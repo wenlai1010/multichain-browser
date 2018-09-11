@@ -36,9 +36,21 @@ export default Vue.extend({
 
             isLoadingBlock: true,
             isLoadingDeal: true,
+            coinType: window.url.indexOf('achain') >= 0 ? 'ACT' : 'SSC'
         }
     },
-
+    computed: {
+        localUrl() {
+            window.url = this.$store.state.localUrl;
+            return this.$store.state.localUrl;
+        }
+    },
+    watch: {
+        localUrl() {
+            this.fetchContractInfo();
+            this.fetchDealRecord();
+        }
+    },
     mounted(){
         window.scrollTo(0, 0);
         this.fetchContractInfo();

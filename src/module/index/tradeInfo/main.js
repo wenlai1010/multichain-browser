@@ -29,6 +29,7 @@ export default Vue.extend({
             pageNum: 0,
             extTrades: {actTransactionExList: []},
             isLoading:true,
+            coinType: window.url.indexOf('achain') >= 0? 'ACT' : 'KCASH'
 
             // isShowContract:false, // 是否显示合约出账
             // tempTransactionId:'',

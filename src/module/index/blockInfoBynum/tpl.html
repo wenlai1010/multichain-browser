@@ -24,13 +24,13 @@
                         </div>
                         <div class="cont-item">
                             <span class="item-title">{{ $t('transacAmount') }}: </span>
-                            <span class="item-info">{{+block.trans_amount}} SSC</span></div>
+                            <span class="item-info">{{+block.trans_amount}} {{coinType}}</span></div>
                         <div class="cont-item">
                             <span class="item-title">{{ $t('blockSize') }}(Bytes): </span>
                             <span class="item-info">{{block.block_size}}</span></div>
                         <div class="cont-item">
                             <span class="item-title">{{ $t('blockAward') }}:  </span>
-                            <span class="item-info">{{block.block_bonus}} SSC</span></div>
+                            <span class="item-info">{{block.block_bonus}} {{coinType}}</span></div>
                     </div>
                     <div class="review-cont-right">
                         <div class="cont-item">
@@ -41,7 +41,7 @@
                             <a class="item-info" @click="toBlockAgent(block.signee)">{{block.signee}}</a></div>
                         <div class="cont-item">
                             <span class="item-title">{{ $t('blockCommission') }}: </span>
-                            <span class="item-info">{{+block.trans_fee}} SSC</span></div>
+                            <span class="item-info">{{+block.trans_fee}} {{coinType}}</span></div>
                         <div class="cont-item">
                             <span class="item-title">{{ $t('blockTime') }}: </span>
                             <span class="item-info">{{block.block_time|locale-time}}</span></div>
