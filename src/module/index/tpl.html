@@ -13,8 +13,8 @@
                 <!-- <input class="search-box-input" v-model="searchTxt" @keyup.enter="toSearch()" type="text" placeholder="区块Hash、区块高度、合约ID、交易ID、账户名称、账户地址"> -->
                 <input class="search-box-input" v-model="searchTxt" @keyup.enter="toSearch()" type="text" :placeholder="$tc('block',1)+' Hash, '+$t('blockHeight')+', '+$tc('transac',1)+' ID, '+$t('accountName')+', '+$t('accountAddr')">
                 <span class="search-box-btn" @mouseenter="isHover=true" @mouseleave="isHover=false" @click="toSearch()">
-                    <img calss="btn-search" src="./img/sc_icon.png" alt="" width="24" style="margin-top: 18px" v-if="!isHover">
-                    <img calss="btn-search" src="./img/sc_icon2.png" alt="" width="24" style="margin-top: 18px" v-else>
+                    <img calss="btn-search" src="./img/sc_icon.png" alt="" width="24" height="24" style="margin-top: 18px" v-if="!isHover">
+                    <img calss="btn-search" src="./img/sc_icon2.png" alt="" width="24" height="24" style="margin-top: 18px" v-else>
                 </span>
             </div>
         </section>

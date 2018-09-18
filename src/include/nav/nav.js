@@ -29,7 +29,16 @@ $(function () {
             }
 
         });
-
+        $(".item").mouseenter(function(e){
+            $(".browser-select").css('visibility','visible');
+            $(".browser-select").css('opacity','1');
+            $(".browser-select").css('transform','translateY(-18px)');
+        });
+        $(".item").mouseleave(function(e){
+            $(".browser-select").css('visibility','hidden');
+            $(".browser-select").css('opacity','0');
+            $(".browser-select").css('transform','translateY(0)');
+        });
     }
     // $('.js-lang').click(function(e) {
     //     // 获取当前页面

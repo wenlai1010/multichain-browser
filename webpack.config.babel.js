@@ -10,8 +10,8 @@ const PUBLIC_PATH = '';
 
 export default {
     entry: {
-        'index': ['./src/js/index.js'],
-        'contract': ['./src/js/contract.js'],
+        'index': ["babel-polyfill",'./src/js/index.js'],
+        'contract': ["babel-polyfill",'./src/js/contract.js'],
         // 'bonus': ['./src/js/bonus.js'],
         // 'grab': ['./src/js/grab.js'],
         // 'wallet': ['./src/js/wallet.js'],

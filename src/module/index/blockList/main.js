@@ -30,6 +30,7 @@ export default Vue.extend({
     computed: {
         localUrl() {
             window.url = this.$store.state.localUrl;
+            alert(this.$store.state.localUrl);
             return this.$store.state.localUrl;
         }
     },

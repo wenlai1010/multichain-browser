@@ -86,18 +86,23 @@ const app = new Vue({
 
 
 
-            if(key == 'ssc'){
+            if(key != undefined && key == 'ssc'){
                 this.$store.commit('changeUrl',Config.baseUriSsc);
                 document.title = this.$t('siteTitleSsc');
                 var linkEle = document.getElementById("link1");
 
                 linkEle.href = './img/favicon.ico';
-            }else{
+                sessionStorage.setItem('chain','ssc');
+                window.location.href = './index.html';
+            }
+            if(key != undefined && key == 'achain'){
                 this.$store.commit('changeUrl',Config.baseUriAchain)
                 document.title = this.$t('siteTitleAchain');
                 var linkEle = document.getElementById("link1");
 
                 linkEle.href = './img/favicon-a.ico';
+                sessionStorage.setItem('chain','achain');
+                window.location.href = './index.html';
             }
         },
         getPath(){

@@ -96,6 +96,12 @@ const app = new Vue({
     components: {
         Loading,
     },
+    // computed: {
+    //     localUrl() {
+    //         window.url = this.$store.state.localUrl;
+    //         return this.$store.state.localUrl;
+    //     }
+    // },
     created() {
         this.changeMenu();
         this.getPath();
@@ -107,7 +113,11 @@ const app = new Vue({
         });
     },
     watch: {
-        '$route':'getPath'
+        '$route':'getPath',
+        // localUrl() {
+        //     this.changeMenu();
+        //     this.getPath();
+        // }
     },
     methods: {
         changeMenu(key) {
@@ -119,14 +129,19 @@ const app = new Vue({
             // $('.wallet-broadcast-nav').text(this.$t('walletBroadcast'));
             // $('.corp-mail').text(this.$t('corpMail'));
             // $('.site-lang').text(this.$t('lang'));
-
-            if(window.url.indexOf('ssc') >= 0){
+            if(key != undefined){
+                $(".browser-select").css('visibility','hidden');
+                $(".browser-select").css('opacity','0');
+                $(".browser-select").css('transform','translateY(0)');
+            }
+            if(sessionStorage.getItem('chain') == 'ssc' || window.url.indexOf('ssc') >= 0){
                 document.title = this.$t('siteTitleSsc');
                 var linkEle = document.getElementById("link1");
 
                 linkEle.href = './img/favicon.ico';
                 $('#logo').attr('src','./img/selfsell-logo.png');
                 $('.blockchain-nav').text(this.$t('selfsell'));
+                this.$store.commit('changeUrl',Config.baseUriSsc);
             }else{
                 $('.blockchain-nav').text(this.$t('achain'));
                 document.title = this.$t('siteTitleAchain');
@@ -134,15 +149,22 @@ const app = new Vue({
 
                 linkEle.href = './img/favicon-a.ico';
                 $('#logo').attr('src','./img/achain-logo.png');
+                this.$store.commit('changeUrl',Config.baseUriAchain);
             }
 
-
-
+            if(key != undefined && window.location.hash.indexOf("blockList") < 0 && window.location.hash.indexOf("dealList") < 0){
+                if(key == 'ssc'){
+                    this.$store.commit('changeUrl',Config.baseUriSsc);
+                }else{
+                    this.$store.commit('changeUrl',Config.baseUriAchain);
+                }
+                this.$router.push('/');
+                return;
+            }
             if(key == 'ssc'){
                 this.$store.commit('changeUrl',Config.baseUriSsc);
                 document.title = this.$t('siteTitleSsc');
                 var linkEle = document.getElementById("link1");
-
                 linkEle.href = './img/favicon.ico';
             }else{
                 this.$store.commit('changeUrl',Config.baseUriAchain)
@@ -151,6 +173,7 @@ const app = new Vue({
 
                 linkEle.href = './img/favicon-a.ico';
             }
+
         },
         getPath(){
             if(this.$route.path.length > 1){

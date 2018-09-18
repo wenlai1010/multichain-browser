@@ -199,8 +199,8 @@ export default {
         
         
         //多链浏览器
-        achain:'Achain浏览器',
-        selfsell: 'SelfSell浏览器',
+        achain:'Achain Browser',
+        selfsell: 'SelfSell Browser',
 
     }
 }
