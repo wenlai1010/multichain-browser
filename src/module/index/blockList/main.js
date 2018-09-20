@@ -30,12 +30,15 @@ export default Vue.extend({
     computed: {
         localUrl() {
             window.url = this.$store.state.localUrl;
-            alert(this.$store.state.localUrl);
             return this.$store.state.localUrl;
         }
     },
     watch: {
         localUrl() {
+            this.condition = {
+                pageNo: 1,
+                pageSize: 10
+            };
             this.fetchBlockList();
         }
     },

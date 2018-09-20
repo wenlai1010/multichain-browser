@@ -29,7 +29,12 @@ $(function () {
             }
 
         });
-        $(".item").mouseenter(function(e){
+        $(".blockchain-nav").mouseenter(function(e){
+            $(".browser-select").css('visibility','visible');
+            $(".browser-select").css('opacity','1');
+            $(".browser-select").css('transform','translateY(-18px)');
+        });
+        $(".blockchain-nav").hover(function(e){
             $(".browser-select").css('visibility','visible');
             $(".browser-select").css('opacity','1');
             $(".browser-select").css('transform','translateY(-18px)');

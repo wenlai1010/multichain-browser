@@ -37,6 +37,10 @@ export default Vue.extend({
     },
     watch: {
         localUrl() {
+            this.condition = {
+                pageNo: 1,
+                pageSize: 10
+            };
             this.fetchDealList();
         }
     },

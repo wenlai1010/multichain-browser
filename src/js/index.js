@@ -134,7 +134,7 @@ const app = new Vue({
                 $(".browser-select").css('opacity','0');
                 $(".browser-select").css('transform','translateY(0)');
             }
-            if(sessionStorage.getItem('chain') == 'ssc' || window.url.indexOf('ssc') >= 0){
+            if(sessionStorage.getItem('chain') == 'ssc' || key == 'ssc'){
                 document.title = this.$t('siteTitleSsc');
                 var linkEle = document.getElementById("link1");
 
@@ -160,18 +160,6 @@ const app = new Vue({
                 }
                 this.$router.push('/');
                 return;
-            }
-            if(key == 'ssc'){
-                this.$store.commit('changeUrl',Config.baseUriSsc);
-                document.title = this.$t('siteTitleSsc');
-                var linkEle = document.getElementById("link1");
-                linkEle.href = './img/favicon.ico';
-            }else{
-                this.$store.commit('changeUrl',Config.baseUriAchain)
-                document.title = this.$t('siteTitleAchain');
-                var linkEle = document.getElementById("link1");
-
-                linkEle.href = './img/favicon-a.ico';
             }
 
         },
