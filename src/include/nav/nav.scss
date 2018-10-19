@@ -22,6 +22,35 @@
         position: relative;
         width: $layout-width;
         margin: 0 auto;
+        .eye-box{
+            width:124px;
+            height:48px;
+            cursor: pointer;
+            //background:rgba(255,255,255,.1);
+            border-radius:8px;
+            color:rgba(243,243,244,1);
+            font-size: 15px;
+            //opacity:0.1;
+            float: left;
+            margin-top: 30px;
+            animation:breathe 2s infinite;
+            animation-direction:alternate;
+            @keyframes breathe
+            {
+                from {background:rgba(255,255,255,.1)}
+                to {background:rgba(255,255,255,.3)}
+            }
+            >div{
+                display: inline-block;
+                position: relative;
+                top: -12px;
+            }
+            .obbtn-img{
+                width: 35px;
+                margin-top: 5px;
+                margin-left: 12px;
+            }
+        }
         .left {
             float: left;
             @extend %h80;

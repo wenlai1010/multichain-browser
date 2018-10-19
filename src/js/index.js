@@ -138,8 +138,8 @@ const app = new Vue({
                 document.title = this.$t('siteTitleSsc');
                 var linkEle = document.getElementById("link1");
 
-                linkEle.href = './img/favicon.ico';
-                $('#logo').attr('src','./img/selfsell-logo.png');
+                // linkEle.href = './img/favicon.ico';
+                // $('#logo').attr('src','./img/selfsell-logo.png');
                 $('.blockchain-nav').text(this.$t('selfsell'));
                 this.$store.commit('changeUrl',Config.baseUriSsc);
             }else{
@@ -147,8 +147,8 @@ const app = new Vue({
                 document.title = this.$t('siteTitleAchain');
                 var linkEle = document.getElementById("link1");
 
-                linkEle.href = './img/favicon-a.ico';
-                $('#logo').attr('src','./img/achain-logo.png');
+                // linkEle.href = './img/favicon-a.ico';
+                // $('#logo').attr('src','./img/achain-logo.png');
                 this.$store.commit('changeUrl',Config.baseUriAchain);
             }
 
@@ -169,6 +169,9 @@ const app = new Vue({
             }else{
                 $('.layout-nav').removeClass("layout-nav-black");
             }
+        },
+        toob(){
+            window.location.href = './observation.html'
         }
     }
 }).$mount('#app');

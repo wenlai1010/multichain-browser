@@ -22,11 +22,11 @@ $(function () {
             $('.js-selected').css('visibility','hidden');
             $(this).find('i').css('visibility','visible');
             $('.blockchain-nav').text($(this).text());
-            if($(this).data('href') == 'selfsell'){
-                $('#logo').attr('src','./img/selfsell-logo.png');
-            }else{
-                $('#logo').attr('src','./img/achain-logo.png');
-            }
+            // if($(this).data('href') == 'selfsell'){
+            //     $('#logo').attr('src','./img/selfsell-logo.png');
+            // }else{
+            //     $('#logo').attr('src','./img/achain-logo.png');
+            // }
 
         });
         $(".blockchain-nav").mouseenter(function(e){
