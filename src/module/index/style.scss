@@ -50,6 +50,9 @@ $colorWhite: #fff;
         width: 680px;
         margin: 0 auto;
         margin-top: 50px;
+        border: 1px solid #717171;
+        background-color: rgba(0,0,0,0);
+        border-radius: 8px;
         &-btn{
           position: absolute;
           top: 0;
@@ -83,14 +86,14 @@ $colorWhite: #fff;
         }
         &-input{
           display: block;
-          width: 100%;
+          width: 95%;
           height: 58px;
           padding-left: 30px;
           font-size: 16px;
           color: #fff;
-          border: 1px solid #717171;
+          border: none;
           background-color: rgba(0,0,0,0);
-          border-radius: 8px;
+          //border-radius: 8px;
           &::-webkit-input-placeholder { /* WebKit browsers */
             color: #f5f5f5;
             font-size: 13px;
@@ -119,11 +122,12 @@ $colorWhite: #fff;
             font-weight: lighter;
 
           }
-          &:focus,&:hover{
-            background-color: rgba(255,255,255,.04);
-            border: 1px solid rgba(255,255, 255, .5);
-            @extend %placeholderColor;
-          }
+
+        }
+        &:focus,&:hover{
+          background-color: rgba(255,255,255,.04);
+          border: 1px solid rgba(255,255, 255, .5);
+          @extend %placeholderColor;
         }
       }
     }

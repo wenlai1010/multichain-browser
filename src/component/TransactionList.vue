@@ -88,7 +88,6 @@
         methods: {
             // 处理列表结果
             listFliter(){
-                console.log('listFliter');
                 let vm = this;
                 let arr = this.dealList;
                 arr.forEach(function (deal, index) {

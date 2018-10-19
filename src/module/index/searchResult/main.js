@@ -44,13 +44,11 @@ export default Vue.extend({
             return this.$store.state.localUrl;
         }
     },
-    watch: {
-        localUrl() {
-            this.fetchBalance();
-            this.fetchTradeInfo();
-        }
-    },
     created() {
+        this.condition = {
+            pageNo: 1,
+            pageSize: 10
+        };
         this.fetchBalance();
         this.fetchTradeInfo();
     },
@@ -63,10 +61,22 @@ export default Vue.extend({
         },
         '$route.query.fromAcct'(val,oldVal){
             this.updateQuery();
+        },
+        localUrl() {
+            this.condition = {
+                pageNo: 1,
+                pageSize: 10
+            };
+            this.fetchBalance();
+            this.fetchTradeInfo();
         }
     },
     methods: {
         updateQuery(){
+            this.condition = {
+                pageNo: 1,
+                pageSize: 10
+            };
             this.tradeList = [];
             this.hasMore = true;
             this.acct_address = this.$route.query.fromAddress || '';

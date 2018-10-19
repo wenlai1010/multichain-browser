@@ -45,14 +45,14 @@ export default Vue.extend({
     },
     watch: {
         localUrl() {
-            this.renderBlockList();
-            this.renderDealList();
+            this.renderBlockList(true);
+            this.renderDealList(true);
         }
     },
     created() {
         window.scrollTo(0,0);
-        this.renderBlockList();
-        this.renderDealList();
+        this.renderBlockList(false);
+        this.renderDealList(false);
     },
     components: {
         // BlockInfo,
@@ -103,13 +103,13 @@ export default Vue.extend({
         },
 
         // 轮询区块列表
-        renderBlockList(){
+        renderBlockList(isClear){
             this.isLoadingBlock = false;
-            commonService.onLoopBlockList((rep)=>{
-                console.log('',rep);
+            commonService.onLoopBlockList(isClear,(rep)=>{
                 this.isLoadingBlock = false;
                 if(rep.code==200){
                     if(!rep.result.dataList.length){
+                        this.blockList =[];
                         // window.toast(this.$t('noData'));
                         return;
                     }
@@ -163,12 +163,13 @@ export default Vue.extend({
         },
 
         // 轮询协议列表
-        renderDealList(){
+        renderDealList(isClear){
             this.isLoadingDeal = true;
-            commonService.onLoopDealList((rep)=>{
+            commonService.onLoopDealList(isClear,(rep)=>{
                 this.isLoadingDeal = false;
                 if(rep.code==200){
                     if(!rep.result.dataList.length){
+                        this.dealList =[];
                         // window.toast(this.$t('noData'));
                         return;
                     }

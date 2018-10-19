@@ -79,7 +79,7 @@ export default {
     },
 
     /**
-     * 轮训区块列表
+     * 轮询区块列表
      */
     onLoopBlockList: (function () {
         const LOOP_TIME = RENDER_INTERVAL;
@@ -87,7 +87,7 @@ export default {
 
         let callbacks = [];
 
-        return function (callback) {
+        return function (isClear,callback) {
             let that = this;
 
             callbacks.push(callback);
@@ -100,7 +100,9 @@ export default {
 
             // 非调试状态下
             var timer = setInterval(() => {
-                if(location.hash.indexOf('?')>0){
+                console.log('isClear...111',isClear);
+                if(location.hash.substring(2,location.hash.length).length>0 || isClear){
+                    console.log('isClear...',isClear);
                     clearInterval(timer);
                 }else{
                     loop();
@@ -134,7 +136,7 @@ export default {
 
         let callbacks = [];
 
-        return function (callback) {
+        return function (isClear,callback) {
             let that = this;
 
             callbacks.push(callback);
@@ -147,7 +149,7 @@ export default {
 
             // 非调试状态下
             var timer = setInterval(() => {
-                if(location.hash.indexOf('?')>0){
+                if(location.hash.substring(2,location.hash.length).length>0 || isClear){
                     clearInterval(timer);
                 }else{
                     loop();

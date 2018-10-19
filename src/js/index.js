@@ -23,10 +23,10 @@ import Ranking from '../module/index/ranking/main'
 // import ContractInfo from '../module/index/contractInfo/main'
 
 import store from '../module/index/store';
+import Commonservice  from '../common/commonService';
 
 Vue.use(VueI18n);
 // Vue.use(Vuex);
-
 let i18n =  new VueI18n({
     locale: window.app.LANG,
     messages, // set locale messages
