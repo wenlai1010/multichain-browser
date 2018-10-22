@@ -1,0 +1,31 @@
+{% extends './include/layout.html' %}
+
+{% block title %}取消观察{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="./scss/cancelObser.scss">
+<script src="./dep/burocratik-detectors.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+
+<router-view :class="window.app.LANG">
+    <div class="layout-loading" style="background-color: inherit;">
+        <div class="m-loading">
+            <div class="rect rect1"></div>
+            <div class="rect rect2"></div>
+            <div class="rect rect3"></div>
+            <div class="rect rect4"></div>
+            <div class="rect rect5"></div>
+        </div>
+    </div>
+</router-view>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block script %}
+<script src="./js/cancelObser.js"></script>
+{% endblock %}
