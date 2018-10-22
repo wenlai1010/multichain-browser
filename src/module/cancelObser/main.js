@@ -5,12 +5,14 @@
  */
 
 import Vue from 'vue';
+import axios from 'axios'
 import tpl from './tpl.html';
 
 import commonService from '../../common/commonService';
 import Loading from '../../component/Loading.vue';
 import format from '../../common/format';
 
+Vue.prototype.$http= axios
 
 export default Vue.extend({
     name: 'index',
