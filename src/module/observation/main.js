@@ -100,11 +100,18 @@ export default Vue.extend({
             }
         },
         startob(){
-            commonService.startob("",(rep)=>{
-                debugger
-                }
+            commonService.startObser({
+                    id:"",
+                    phoneNum:this.phoneNum,
+                    verifyCode:this.verifyCode,
+                    observeAddress:this.observeAddress,
+                    nickName:this.nickName,
+                    mailAddress:this.mailAddress
+            }).done((rep)=>{
 
-            )
+            }).fail((rep)=> {
+                window.error(rep);
+            });
             // this.$http.post("http://172.16.20.20:8340/ssc/api/browser/mailinfo.Insert",{
             //     id:"",
             //     phoneNum:this.phoneNum,
@@ -147,77 +154,7 @@ export default Vue.extend({
                     // }
                 })
             }
-        },
-        // 获取合约列表
-        fetchContractList(){
-            this.loading = true;
-            commonService.contractList({
-                "keyword": this.contractSearchTxt,
-                "page": +this.pageNo,
-                "per_page": this.pageSize,
-            }).done((rep) => {
-                if(rep.data){
-                    this.toLoadList(rep);
-                }
-            }).fail((rep) => {
-                window.error(rep);
-            }).always(() => {
-                this.isLoading = false;
-            })
-        },
-
-        // 点击搜索按钮 或回车调用的函数
-        toSearchContract(){
-            this.txt = this.contractSearchTxt; // 存储搜索的内容,这样在分页的时候搜索框的内容被修改了也不会报错
-            this.pageNo = 1;
-            this.fetchContractList();
-        },
-
-        // 点击分页条调用的函数
-        changeContractPage(){
-            commonService.contractList({
-                "keyword": this.txt,
-                "page": +this.pageNo,
-                "per_page": this.pageSize,
-            }).done((rep) => {
-                if(rep.data){
-                    this.toLoadList(rep);
-                }
-            }).fail((rep) => {
-                window.error(rep);
-            });
-        },
-
-        //接口调用成功后 公共逻辑
-        toLoadList(rep){
-            if (rep.data.contractInfoVOList.length == 0) {
-                window.toast(this.$t('noData'))
-                return;
-            }
-            this.pageNum = rep.data.totalPage;
-            let listArr = rep.data.contractInfoVOList;
-            listArr.forEach((contract, index) => {
-                let status = contract.status;
-                listArr[index].status = this.$i18n.messages[this.$i18n.locale].contractStatusList[contract.status];;
-                listArr[index].cType = this.$i18n.messages[this.$i18n.locale].contractTypes[contract.coin];
-            });
-            this.contractList = listArr;
-        },
-
-        // 跳转到合约详情页
-        toContractInfo(parm){
-            this.$router.push({name: 'contractInfo', params: {contract_id: parm}, query: {cl:1}})
-        },
-
-        // 点击输入框中删除符号
-        toReload(){
-            this.contractSearchTxt = '';
-        },
-
-        // 点击分页条中的页码
-        changePage(num){
-            this.pageNo = num;
-            this.changeContractPage();
         }
+
     }
 });
