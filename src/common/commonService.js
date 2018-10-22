@@ -9,6 +9,14 @@ import ajax from '../util/ajax';
 const RENDER_INTERVAL = 6000;
 
 export default {
+    /**
+     * 取消订阅---暗中观察
+     * @param param
+     * @returns {*}
+     */
+    cancelObser(param = {}){
+        return ajax.post('/mailinfo.Delete', param);
+    },
 
     /**
      * 搜索类型查询
@@ -315,9 +323,6 @@ export default {
     getCoinList(param = {}){
         return ajax.get('/wallets/api/browser/act/contract/query/forever', {noPrefix: true});
     },
-    //开始观察
-    startob(param = {}){
-        return ajax.post('/mailinfo.Insert',param);
-    }
+    
 
 };
