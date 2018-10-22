@@ -17,8 +17,10 @@ export default Vue.extend({
     template: tpl,
     data(){
     },
-    created() {
+    mounted() {
+        $("#phone").intlTelInput();
         window.scrollTo(0,0);
+
     },
     components: {
         Loading

@@ -2,8 +2,6 @@
 import Vue from 'vue';
 import tpl from './tpl.html';
 import axios from 'axios'
-import '../../dep/intlTelInput'
-import '../../scss/intlTelInput.css'
 
 import './style.scss'
 
