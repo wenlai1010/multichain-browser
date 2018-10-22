@@ -4,6 +4,7 @@ import tpl from './tpl.html';
 import axios from 'axios'
 
 import './style.scss'
+import commonService from "../../common/commonService";
 Vue.prototype.$http= axios
 
 export default Vue.extend({
@@ -20,10 +21,10 @@ export default Vue.extend({
             sendMsgDisabled:false,
             time:60,
             addverify:false,
-            telError:false,
-            codeError:false,
-            addError:false,
-            mailError:false
+            telError:"",
+            codeError:"",
+            addError:"",
+            mailError:""
         }
     },
     computed: {
@@ -99,24 +100,29 @@ export default Vue.extend({
             }
         },
         startob(){
-            this.$http.post("http://172.16.20.20:8340/ssc/api/browser/mailinfo.Insert",{
-                id:"",
-                phoneNum:this.phoneNum,
-                verifyCode:this.verifyCode,
-                observeAddress:this.observeAddress,
-                nickName:this.nickName,
-                mailAddress:this.mailAddress
-            }).then((result)=>{
-                // debugger
-                var res = result.data.status;
-                if(res.code != "0"){
-                    this.sendMsgDisabled= false;
-                    window.clearInterval(interval);
-                    this.msg=res.msg;
-                    return
+            commonService.startob("",(rep)=>{
+                debugger
                 }
-                // }
-            })
+
+            )
+            // this.$http.post("http://172.16.20.20:8340/ssc/api/browser/mailinfo.Insert",{
+            //     id:"",
+            //     phoneNum:this.phoneNum,
+            //     verifyCode:this.verifyCode,
+            //     observeAddress:this.observeAddress,
+            //     nickName:this.nickName,
+            //     mailAddress:this.mailAddress
+            // }).then((result)=>{
+            //     // debugger
+            //     var res = result.data.status;
+            //     if(res.code != "0"){
+            //         this.sendMsgDisabled= false;
+            //         window.clearInterval(interval);
+            //         this.msg=res.msg;
+            //         return
+            //     }
+            //     // }
+            // })
         },
         addBlur(){
             if(!this.observeAddress){

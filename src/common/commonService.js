@@ -314,6 +314,10 @@ export default {
      * */
     getCoinList(param = {}){
         return ajax.get('/wallets/api/browser/act/contract/query/forever', {noPrefix: true});
+    },
+    //开始观察
+    startob(param = {}){
+        return ajax.post('/mailinfo.Insert',param);
     }
 
 };
