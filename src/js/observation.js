@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+// import '../dep/intlTelInput'
 // import VueI18n from 'vue-i18n'
 // import messages from '../module/bonus/lang';
 

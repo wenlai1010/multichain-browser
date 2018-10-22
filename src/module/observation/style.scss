@@ -1,121 +1,182 @@
-/**
- * @file
- * @auth donglele
- * @date 2016/12/29
- */
- @import "contractInfo/style";
-.module-contract {
-  .contract-cont{
-      width: $layout-width;
-      margin: 0 auto;
-    @mixin placeholdercolor($color:#aaa){
-        &::-webkit-input-placeholder { /* WebKit browsers */
-          color: $color;
-        }
-        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-          color: $color;
-        }
-        &::-moz-placeholder { /* Mozilla Firefox 19+ */
-          color: $color;
-        }
-        &:-ms-input-placeholder { /* Internet Explorer 10+ */
-          color: $color;
-        }
-      }
-      .search-box{
-        position: relative;
-        width: 700px;
-        height: 60px;
-        margin: 10px auto 56px;
-        >input{
-          display: block;
-          width: 100%;
-          height: 60px;
-          padding: 0 30px;
-          border: 1px #ccc solid;
-          border-radius: 30px;
-          font-size: 16px;
-          color: #666;
-          background: #fff;
-          @include placeholdercolor;
-          &:hover{
-            border: 1px #e5e5e5 solid;
-            @include placeholdercolor(#ccc);
-          }
-          &:focus{
-            border: 1px #e5e5e5 solid;
-            @include placeholdercolor(#ccc);
-          }
-        }
-        &-btn{
-          position: absolute;
-          top: 0;
-          right: 15px;
-          width: 60px;
-          height: 60px;
-          text-align: center;
-          cursor: pointer;
-          >.btn-search{
-
-          }
-        }
-        &-delete{
-          position: absolute;
-          top: 23px;
-          right: 70px;
-          width: 14px;
-          height: 14px;
-        }
-      }
-    .contract-block{
-      width: 100%;
-      margin: 20px 0 90px;
-      table tbody td:first-child{
-        position: relative;
-      }
-      table td i{
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 3px;
-        height: 46px;
-        background-color: $color-link;
-      }
-
-      table span {
-        display: inline-block;
-        width: 80px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: 1;
-      }
-      table tr:hover{
-        cursor: pointer;
-        //transition: height 2s linear;
-        //height: 92px;
-        i{
-          display: block;
-        }
-      }
-      table tr:nth-child(odd):hover{
-        background-color: #f9fbfe;
-      }
-      table tr:nth-child(even):hover{
-        background-color: #eef2f9;
-      }
-      .tip {
-        text-indent: 10px;
-        position: relative;
-        top: -24px;
-        color: #aaa;
-        display: inline-block;
-        &.nopage{
-          position: static;
-          margin-top: 24px;
-        }
-      }
+.topbg{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 607px;
+  width: 90%;
+  background: url('./img/toubu.png') no-repeat;
+  background-size: 100% 100%;
+  z-index: -1;
+}
+.top-box{
+  max-width: 840px;
+  margin: 134px auto auto;
+  position: relative;
+  >img:nth-child(1) {
+    position: absolute;
+    top: 2px;
+    right: -131px;
+  }
+  >img:nth-child(2) {
+    position: absolute;
+    top: -60px;
+    left: 5px;
+  }
+  >img:nth-child(3) {
+    position: absolute;
+    top: -53px;
+    right: -7px;
+  }
+  >img:nth-child(4) {
+    position: absolute;
+    top: 130px;
+    right: -138px;
+  }
+  >img:nth-child(5) {
+    position: absolute;
+    top: 110px;
+    left: -54px;
+  }
+  .fstline{
+    max-width: 592px;
+    margin: auto;
+    font-size: 60px;
+    font-weight:100;
+    color:rgba(255,255,255,1);
+    img{
+      width: 70px;
+    }
+    >div{
+      display: inline-block;
+      position: relative;
+      top: -6px;
+    }
+  }
+  .decline1{
+    margin-top: 20px;
+    font-size:16px;
+    font-weight:100;
+    color:rgba(255,255,255,1);
+    display: flex;
+    justify-content: space-between;
+    >div{
+      width: 255px;
+    }
+    img{
+      width: 70px;
+    }
+  }
+  .decline2{
+    font-size:16px;
+    font-weight:100;
+    color:rgba(255,255,255,1);
+    display: flex;
+    justify-content: space-between;
+    >div{
+      width: 255px;
+    }
+    img{
+      width: 70px;
+    }
+    .decls{
+      //float: left;
+    }
+  }
+  .declf,.decrf,.decls,.decrs{
+    //float: left;
+    >div{
+      display: inline-block;
+      position: relative;
+      top: -29px;
     }
   }
 }
+.leftbg{
+  position: absolute;
+  top: 461px;
+  left: 0;
+  height: 385px;
+  width: 133px;
+  background-image: url(./img/zbg.png);
+  z-index: -1;
+}
+.rightbg{
+  position: absolute;
+  top: 754px;
+  right: 0;
+  height: 302px;
+  width: 100px;
+  background-image: url(./img/ybg.png);
+  z-index: -1;
+}
+.iptbox{
+  max-width: 484px;
+  margin: 200px auto auto;
+  position: relative;
+  .getCode{
+    font-size: 16px;
+    color:rgba(114,17,197,1);
+    position: absolute;
+    left: 384px;
+    top: 111px;
+    cursor: pointer;
+  }
+  .getCode-after {
+    font-size: 16px;
+    color: rgba(204, 204, 204, 1);
+    position: absolute;
+    right: 16px;
+    top: 111px;
+  }
+  div:nth-child(3){
+    position: relative;
+  }
+  input{
+    width:460px;
+    height:48px;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(211,203,218,.4);
+    border-radius:8px;
+    margin-top: 22px;
+    padding-left: 19px;
+    font-size: 16px;
+    color: RGBA(51, 51, 51, 1);
+  }
+  input::-webkit-input-placeholder {
+    color: RGBA(200, 195, 204, 1);
+    font-weight: 300;
+    }
+  input:focus {
+    outline: none !important;
+    border: 1px solid #6a10bf;
 
+    background: rgba(255, 255, 255, 1);
+    border-radius: 4px;
+    box-shadow: 0px 0px 9px rgba(83, 54, 226, 0.13);
+  }
+  .correct-img{
+    position: absolute;
+    right: 15px;
+    bottom: 9px;
+    width: 36px;
+    height: 29px;
+  }
+  .openob-btn{
+    width:240px;
+    height:64px;
+    margin: 68px auto 108px auto;
+    background:linear-gradient(90deg,rgba(125,18,206,1),rgba(87,14,175,1));
+    box-shadow:0px 0px 0px rgba(123,18,204,0.14);
+    border-radius:32px;
+    font-size:16px;
+    color:rgba(255,255,255,1);
+    text-align: center;
+    line-height:64px;
+    cursor:pointer;
+    background-size: 200% auto !important;
+    transition: all 0.3s linear;
+    &:hover{
+      background-position: right center;
+    }
+  }
+}
