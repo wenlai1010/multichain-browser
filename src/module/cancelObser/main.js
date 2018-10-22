@@ -38,23 +38,23 @@ export default Vue.extend({
             if(this.startFlag){
                 return;
             }
-            // this.startTimeInterval();
-            // this.$http.post("http://www.achainlabs.ak/udc/udc/authcode/send",{
-            //     tel:($('.selected-flag .flag span').text()+this.tel),
-            //     Locale:""
-            // },{
-            //     headers:{
-            //         "Content-Type":"text/plain"
-            //     }
-            // }).then((result)=>{
-            //     var res = result.data.status;
-            //     if(res.code != "0"){
-            //         // this.sendMsgDisabled= false;
-            //         // window.clearInterval(interval);
-            //         // this.msg=res.msg;
-            //         return
-            //     }
-            // })
+            this.startTimeInterval();
+            this.$http.post("http://www.achainlabs.ak/udc/udc/authcode/send",{
+                tel:($('.selected-flag .flag span').text()+this.tel),
+                Locale:""
+            },{
+                headers:{
+                    "Content-Type":"text/plain"
+                }
+            }).then((result)=>{
+                var res = result.data.status;
+                if(res.code != "0"){
+                    // this.sendMsgDisabled= false;
+                    // window.clearInterval(interval);
+                    // this.msg=res.msg;
+                    return
+                }
+            })
         },
         startTimeInterval() {
             if (this.seconds <= 0) { //为0的时候还原
