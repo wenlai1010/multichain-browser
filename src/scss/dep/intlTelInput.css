@@ -1,7 +1,7 @@
 .intl-tel-input .flag {
   width: 16px;
   height: 11px;
-  background: url("../img/flags.png")
+  background: url("../../img/flags.png")
 }
 
 .intl-tel-input .zw {
@@ -1075,7 +1075,7 @@
 
 .selected-flag .flag span {
   position: relative;
-  top: -3px;
+  top: -19px;
   left: 23px;
   font-size: 12px;
   color: #333333;
@@ -1083,7 +1083,7 @@
 
 .intl-tel-input .selected-flag .arrow {
   position: relative;
-  top: -11px;
+  top: -40px;
   margin-top: -3px;
   left: 56px;
   width: 0;

@@ -1,14 +1,17 @@
 {% extends './include/layout.html' %}
 
-{% block title %}暗中观察{% endblock %}
+{% block title %}取消观察{% endblock %}
 
 {% block head %}
-<!--<link rel="stylesheet" href="./scss/contract.scss">-->
+<link rel="stylesheet" href="./scss/cancelObser.scss">
 <link rel="stylesheet" href="./scss/dep/intlTelInput.css">
+<script src="./dep/burocratik-detectors.min.js"></script>
 <script src="./dep/intlTelInput.js"></script>
 {% endblock %}
 
 {% block content %}
+
+
 <router-view :class="window.app.LANG">
     <div class="layout-loading" style="background-color: inherit;">
         <div class="m-loading">
@@ -26,7 +29,5 @@
 {% endblock %}
 
 {% block script %}
-<!--<script src="./dep/bignumber.3.0.1.js"></script>-->
-<script src="./js/observation.js"></script>
-<script src="./dep/intlTelInput.js"></script>
+<script src="./js/cancelObser.js"></script>
 {% endblock %}

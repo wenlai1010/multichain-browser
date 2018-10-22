@@ -13,6 +13,7 @@ export default {
         'index': ["babel-polyfill",'./src/js/index.js'],
         'contract': ["babel-polyfill",'./src/js/contract.js'],
         'observation': ["babel-polyfill",'./src/js/observation.js'],
+        'cancelObser': ["babel-polyfill",'./src/js/cancelObser.js'],
         // 'bonus': ['./src/js/bonus.js'],
         // 'grab': ['./src/js/grab.js'],
         // 'wallet': ['./src/js/wallet.js'],

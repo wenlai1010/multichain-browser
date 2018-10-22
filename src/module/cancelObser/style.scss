@@ -1,0 +1,114 @@
+html,body{
+  background: #F6F7F8;
+}
+.module-cancel{
+  &-img{
+    &-top{
+      width:90%;
+      position: absolute;
+      top:0;
+      right:0;
+    }
+    &-left{
+      width: 105px;
+      position: absolute;
+      left:0;
+      top:40%;
+    }
+    &-right{
+      width: 100px;
+      position: absolute;
+      bottom: 5%;
+      right:0;
+    }
+  }
+  &-box{
+    width:50%;
+    margin: 0 auto;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 0px 0px 0px rgba(234,240,254,0.42);
+    border-radius:10px;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    margin-top: 70px;
+    &>p{
+      font-size: 30px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    &-item{
+      width:50%;
+      height:48px;
+      line-height: 48px;
+      margin: 0 auto;
+      border:1px solid #D3CBDA;
+      border-radius:8px;
+      margin-top: 20px;
+      &.textarea{
+        height: 100px;
+      }
+      &-getcode{
+        float: right;
+        font-size: 14px;
+        color: #7211C5;
+        margin-right: 17px;
+        text-decoration: none;
+        &:hover{
+          color: #7211C5;
+          text-decoration: none;
+        }
+      }
+      &-input{
+        display: block;
+        width:90%;
+        height:100%;
+        padding:0;
+        margin: 0 auto;
+        color: #333;
+        outline: none;
+        border: none;
+        &.code{
+          float: left;
+          width:50%;
+          margin-left: 5%;
+        }
+      }
+      &>textarea{
+        display: block;
+        width:90%;
+        height: 100%;
+        padding: 0;
+        padding-top: 10px;
+        margin: 0 auto;
+        outline: none;
+        border: none;
+        color: #333;
+      }
+      &:after{
+        content: '';
+        display: block;
+        height:0;
+        clear: both;
+      }
+    }
+    &-button{
+      display: block;
+      width:240px;
+      height:64px;
+      line-height: 64px;
+      margin: 0 auto;
+      margin-top: 60px;
+      background:linear-gradient(90deg,rgba(125,18,206,1),rgba(87,14,175,1));
+      box-shadow:0px 0px 0px rgba(123,18,204,0.14);
+      border-radius:32px;
+      font-size: 16px;
+      color: #ffffff;
+      cursor: pointer;
+      &:hover{
+        opacity: 0.7;
+      }
+
+    }
+  }
+}
