@@ -6,12 +6,14 @@ import '../../dep/intlTelInput'
 import '../../scss/intlTelInput.css'
 
 import './style.scss'
+Vue.prototype.$http= axios
 
 export default Vue.extend({
     name: 'observation',
     template: tpl,
     data(){
         return {
+            msg:"",
             phoneNum:"",
             verifyCode:"",
             observeAddress:"",
@@ -19,7 +21,11 @@ export default Vue.extend({
             mailAddress:"",
             sendMsgDisabled:false,
             time:60,
-            addverify:false
+            addverify:false,
+            telError:false,
+            codeError:false,
+            addError:false,
+            mailError:false
         }
     },
     computed: {
@@ -102,10 +108,6 @@ export default Vue.extend({
                 observeAddress:this.observeAddress,
                 nickName:this.nickName,
                 mailAddress:this.mailAddress
-            },{
-                headers:{
-                    "Content-Type":"text/plain"
-                }
             }).then((result)=>{
                 // debugger
                 var res = result.data.status;
@@ -129,6 +131,7 @@ export default Vue.extend({
                         "Content-Type":"text/plain"
                     }
                 }).then((result)=>{
+                    debugger
                     // debugger
                     var res = result.data.status;
                     if(res.code != "0"){
