@@ -1,1 +1,70 @@
-<div class="">jidsfjidofjoidi</div>
+<div class="">
+    <div class="topbg">
+    </div>
+    <div class="top-box">
+        <img src="./img/ffive.png" alt="">
+        <img src="./img/ffour.png" alt="">
+        <img src="./img/fone.png" alt="">
+        <img src="./img/ftwo.png" alt="">
+        <img src="./img/ftwo.png" alt="">
+        <div class="fstline">
+            <img src="./img/yanjing@2x.png" alt="">
+            <div>
+                欢迎使用 暗中观察
+            </div>
+        </div>
+        <div class="decline1">
+            <div class="declf">
+                <img src="./img/duolian@2x.png" alt="">
+                <div>
+                    支持多链Achain、SelfSell
+                </div>
+            </div>
+            <div class="decrf">
+                <img src="./img/search@2x.png" alt="">
+                <div>
+                    观察任何你想看的地址
+                </div>
+            </div>
+        </div>
+        <div class="decline2">
+            <div class="decls">
+                <img src="./img/tongbu@2x.png" alt="">
+                <div>
+                    实时同步链上信息
+                </div>
+            </div>
+            <div class="decrs">
+                <img src="./img/mail@2x.png" alt="">
+                <div>
+                    便捷邮件推送提醒
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="leftbg"></div>
+    <div class="rightbg"></div>
+    <div class="iptbox">
+        <div>
+            <input id="mobile-number" type="tel" v-model="phoneNum" placeholder="手机号码">
+        </div>
+        <div>
+            <input type="tel" oninput="if(value.length>6)value=value.slice(0,6)" v-model="verifyCode" placeholder="验证码">
+            <span v-if="!sendMsgDisabled" @click="getCode" class="getCode">获取验证码</span>
+            <span v-if="sendMsgDisabled" class="getCode-after">{{time+'s后重新发送'}}</span>
+        </div>
+        <div>
+            <input type="text" v-model="observeAddress" @blur="addBlur" placeholder="你想观察的账户地址">
+            <img v-if="addverify" class="correct-img" src="./img/xaunzhong@2x.png" alt="">
+        </div>
+        <div>
+            <input type="text" v-model="nickName" placeholder="给这个观察账户地址起个昵称吧，方便记忆（非必填）">
+        </div>
+        <div>
+            <input type="text" v-model="mailAddress" placeholder="接收提醒的邮箱地址">
+        </div>
+    <div class="openob-btn" @click="startob">
+        开始观察
+    </div>
+    </div>
+</div>
