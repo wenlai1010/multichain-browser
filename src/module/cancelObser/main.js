@@ -12,6 +12,7 @@ import commonService from '../../common/commonService';
 import Loading from '../../component/Loading.vue';
 import format from '../../common/format';
 import get from '../../util/get';
+import config from '../../config/config'
 
 Vue.prototype.$http= axios
 
@@ -38,6 +39,7 @@ export default Vue.extend({
     mounted() {
         $("#phone").intlTelInput();
         window.scrollTo(0,0);
+        window.url = config.baseUriSsc; //正式环境需要根据get.data.observeAddress的前缀进行判断
     },
     components: {
         Loading
