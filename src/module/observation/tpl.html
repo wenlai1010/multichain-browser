@@ -46,7 +46,7 @@
     <div class="rightbg"></div>
     <div class="iptbox">
         <div>
-            <input id="mobile-number" :class="{'error':telError}" type="tel" v-model="phoneNum" placeholder="手机号码">
+            <input id="mobile-number" :class="{'error':telError}" type="tel" maxlength="20" v-model="phoneNum" placeholder="手机号码">
             <div class="redmsg">{{telError}}</div>
         </div>
         <div class="code-box">
@@ -55,7 +55,7 @@
             <span v-if="sendMsgDisabled" class="getCode-after">{{time+'s后重新发送'}}</span>
             <div class="redmsg">{{codeError}}</div>
         </div>
-        <div>
+        <div class="addres-box">
             <input type="text" :class="{'error':addError}" v-model="observeAddress" @blur="addBlur" placeholder="你想观察的账户地址">
             <img v-if="addverify" class="correct-img" src="./img/xaunzhong@2x.png" alt="">
             <div class="redmsg">{{addError}}</div>

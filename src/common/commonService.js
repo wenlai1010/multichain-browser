@@ -17,13 +17,22 @@ export default {
     cancelObser(param = {}){
         return ajax.post('/mailinfo.Delete', param);
     },
+
+    /**
+     * 地址校验---暗中观察
+     * @param param
+     * @returns {*}
+     */
+    addBlur(param = {}){
+        return ajax.post('/mailinfo.validateAddress?address=YJCBx8pZXiPcRfQMNruxkRWecYiKRafKEpua', param);
+    },
     /**
      * 开始观察---暗中观察
      * @param param
      * @returns {*}
      */
     startObser(param = {}){
-        return ajax.post('/mailinfo.Delete', param);
+        return ajax.post('/mailinfo.Insert', param);
     },
 
     /**

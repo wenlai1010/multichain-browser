@@ -171,6 +171,7 @@ const app = new Vue({
             }
         },
         toob(){
+            window.sessionStorage.broUrl=this.$store.state.localUrl;
             window.location.href = './observation.html'
         }
     }

@@ -28,10 +28,10 @@ export default Vue.extend({
         }
     },
     computed: {
-        // localUrl() {
-        //     window.url = this.$store.state.localUrl;
-        //     return this.$store.state.localUrl;
-        // }
+        localUrl() {
+            window.url = this.$store.state.localUrl;
+            return this.$store.state.localUrl;
+        }
     },
     watch: {
         // localUrl() {
@@ -44,6 +44,7 @@ export default Vue.extend({
     mounted(){
         // debugger
         // document.getElementById("mobile-number").intlTelInput();
+        window.url=window.sessionStorage.broUrl;
         $("#mobile-number").intlTelInput();
         window.scrollTo(0, 0);
     },
@@ -51,23 +52,24 @@ export default Vue.extend({
     },
     methods: {
         getCode(){
-            this.msg="";
-            if(this.tel==""){
-                this.msg="请输入手机号码";
+            this.telError="";
+            if(this.phoneNum==""){
+                this.telError="请输入手机号码";
                 return
             }
-            let telt1 = new RegExp("^1[0-9]{10}$");
-            let telt2 = new RegExp("^[0-9]{5,15}$");
-            if($('.selected-flag .flag span').text()=="+86"){
-                if(!telt1.test(this.tel)){
-                    this.msg="您输入的手机号格式有误，请按照“地区编号+手机号”的格式输入";
+            var telt1 = new RegExp("^1[0-9]{10}$");
+            var telt2 = new RegExp("^[0-9]{5,15}$");
+            // debugger
+            if($('.selected-flag .flag span').text()=="+86 "){
+                if(!telt1.test(this.phoneNum)){
+                    this.telError="您输入的手机号格式有误";
                     return
                 }
-            }else if(!telt2.test(this.tel)){
-                this.msg="您输入的手机号格式有误，请按照“地区编号+手机号”的格式输入";
+            }else if(!telt2.test(this.phoneNum)){
+                this.telError="您输入的手机号格式有误";
                 return
             }else{}
-            if(this.tel.replace(/\s+/g,"")){//手机号存在
+            if(this.phoneNum.replace(/\s+/g,"")){//手机号存在
                 let me = this;
                 me.sendMsgDisabled = true;
                 let interval = window.setInterval(function() {//倒计时
@@ -78,10 +80,9 @@ export default Vue.extend({
                     }
                 }, 1000);
                 this.$http.post("http://www.achainlabs.ak/udc/udc/authcode/send",{
-                    tel:($('.selected-flag .flag span').text()+this.tel)
+                    tel:($('.selected-flag .flag span').text()+this.phoneNum)
                 },{
                     headers:{
-                        "Locale":this.$t('m.ajaxhead'),
                         "Content-Type":"text/plain"
                     }
                 }).then((result)=>{
@@ -90,69 +91,91 @@ export default Vue.extend({
                     if(res.code != "0"){
                         this.sendMsgDisabled= false;
                         window.clearInterval(interval);
-                        this.msg=res.msg;
+                        this.telError=res.msg;
                         return
                     }
                     // }
                 })
             }else{
-                this.msg="请输入手机号";
+                this.telError="请输入手机号";
             }
         },
         startob(){
+            if(this.phoneNum==""){
+                this.telError="请输入手机号码";
+                return
+            }
+            if(this.verifyCode==""){
+                this.codeError="请输入验证码";
+                return
+            }
+            if(this.observeAddress==""){
+                this.addError="请输入观察地址";
+                return
+            }
+            if(this.mailAddress==""){
+                this.mailError="请输入邮箱地址";
+                return
+            }
+            if(this.contactEmail){
+                if(!new RegExp("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z0-9]{2,6}$").test(this.contactEmail)){
+                    this.mailError="邮箱格式有误，请重新输入";
+                    return
+                }
+            }
+            // debugger
             commonService.startObser({
                     id:"",
-                    phoneNum:this.phoneNum,
+                    phoneNum:($('.selected-flag .flag span').text()+this.phoneNum),
                     verifyCode:this.verifyCode,
                     observeAddress:this.observeAddress,
                     nickName:this.nickName,
                     mailAddress:this.mailAddress
             }).done((rep)=>{
-
+                if(rep.code=='200'){
+                    window.success("成功开始观察！请留意邮件哦～")
+                }else{
+                    window.error(rep.msg);
+                }
             }).fail((rep)=> {
                 window.error(rep);
             });
-            // this.$http.post("http://172.16.20.20:8340/ssc/api/browser/mailinfo.Insert",{
-            //     id:"",
-            //     phoneNum:this.phoneNum,
-            //     verifyCode:this.verifyCode,
-            //     observeAddress:this.observeAddress,
-            //     nickName:this.nickName,
-            //     mailAddress:this.mailAddress
-            // }).then((result)=>{
-            //     // debugger
-            //     var res = result.data.status;
-            //     if(res.code != "0"){
-            //         this.sendMsgDisabled= false;
-            //         window.clearInterval(interval);
-            //         this.msg=res.msg;
-            //         return
-            //     }
-            //     // }
-            // })
         },
         addBlur(){
             if(!this.observeAddress){
 
             }else{//地址校验合法
-                this.$http.post("http://172.16.20.20:8340/ssc/api/browser/mailinfo.validateAddress?address=YJCBx8pZXiPcRfQMNruxkRWecYiKRafKEpua",{
+                commonService.addBlur({
                     observeAddress:this.observeAddress
-                },{
-                    headers:{
-                        "Content-Type":"text/plain"
+                }).done((rep)=>{
+                    if(rep.code=='200'){
+                        this.addverify=true
+                    }else{
+                        window.error(rep.msg);
                     }
-                }).then((result)=>{
-                    debugger
-                    // debugger
-                    var res = result.data.status;
-                    if(res.code != "0"){
-                        this.sendMsgDisabled= false;
-                        window.clearInterval(interval);
-                        this.msg=res.msg;
-                        return
-                    }
-                    // }
-                })
+                }).fail((rep)=> {
+                    window.error(rep);
+                });
+
+
+                // this.$http.post("http://172.16.20.20:8340/ssc/api/browser/mailinfo.validateAddress?address=YJCBx8pZXiPcRfQMNruxkRWecYiKRafKEpua",{
+                //     observeAddress:this.observeAddress
+                // },{
+                //     headers:{
+                //         "Content-Type":"text/plain"
+                //     }
+                // }).then((result)=>{
+                //     debugger
+                //     // debugger
+                //     var res = result.data.status;
+                //     if(res.code != "0"){
+                //         this.sendMsgDisabled= false;
+                //         window.clearInterval(interval);
+                //         this.msg=res.msg;
+                //         return
+                //     }
+                //     // }
+                // })
             }
         }
 
