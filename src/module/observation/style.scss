@@ -8,9 +8,16 @@
   background-size: 100% 100%;
   z-index: -1;
 }
+.head-img{
+  width: 90%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
 .top-box{
-  max-width: 840px;
-  margin: 134px auto auto;
+  max-width: 50%;
+  margin: 4% auto auto;
   position: relative;
   >img:nth-child(1) {
     position: absolute;
@@ -60,7 +67,7 @@
     display: flex;
     justify-content: space-between;
     >div{
-      width: 260px;
+      width: 262px;
     }
     img{
       width: 70px;
@@ -111,7 +118,7 @@
 }
 .iptbox{
   max-width: 484px;
-  margin: 200px auto auto;
+  margin: 145px auto auto;
   position: relative;
   .areacode{
     top: -6px !important;
