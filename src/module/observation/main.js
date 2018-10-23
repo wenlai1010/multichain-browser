@@ -102,10 +102,26 @@ export default Vue.extend({
             }
         },
         startob(){
+            this.telError="";
+            this.codeError="";
+            this.addError="";
+            this.mailError="";
             if(this.phoneNum==""){
                 this.telError="请输入手机号码";
                 return
             }
+            var telt1 = new RegExp("^1[0-9]{10}$");
+            var telt2 = new RegExp("^[0-9]{5,15}$");
+            // debugger
+            if($('.selected-flag .flag span').text()=="+86 "){
+                if(!telt1.test(this.phoneNum)){
+                    this.telError="您输入的手机号格式有误";
+                    return
+                }
+            }else if(!telt2.test(this.phoneNum)){
+                this.telError="您输入的手机号格式有误";
+                return
+            }else{}
             if(this.verifyCode==""){
                 this.codeError="请输入验证码";
                 return
@@ -124,34 +140,77 @@ export default Vue.extend({
                     return
                 }
             }
+            if(
+                $('.selected-flag .flag span').text()+this.phoneNum===sessionStorage.getItem('phoneNum')&&
+                this.observeAddress===sessionStorage.getItem('observeAddress')&&
+                this.mailAddress===sessionStorage.getItem('mailAddress')
+            ){
+                window.error('请勿重复提交');
+                return
+            }
             // debugger
-            commonService.startObser({
-                    id:"",
-                    phoneNum:($('.selected-flag .flag span').text()+this.phoneNum),
-                    verifyCode:this.verifyCode,
-                    observeAddress:this.observeAddress,
-                    nickName:this.nickName,
-                    mailAddress:this.mailAddress,
-                    userId:getParam.data.userId
-            }).done((rep)=>{
+            commonService.addBlur({
+                // observeAddress:this.observeAddress
+            },this.observeAddress).done((rep)=>{
                 if(rep.code=='200'){
-                    window.success("成功开始观察！请留意邮件哦～")
+                    if(rep.result){
+                        this.addverify=true;
+                        commonService.startObser({
+                            id:"",
+                            phoneNum:($('.selected-flag .flag span').text()+this.phoneNum),
+                            verifyCode:this.verifyCode,
+                            observeAddress:this.observeAddress,
+                            nickName:this.nickName,
+                            mailAddress:this.mailAddress,
+                            userId:getParam.data.userId?getParam.data.userId:""
+                        }).done((rep)=>{
+                            if(rep.code=='200'){
+                                window.success("成功开始观察！请留意邮件哦～");
+                                sessionStorage.setItem('phoneNum',$('.selected-flag .flag span').text()+this.phoneNum);
+                                sessionStorage.setItem('observeAddress',this.observeAddress);
+                                sessionStorage.setItem('mailAddress',this.mailAddress)
+                            }else{
+                                window.error(rep.msg);
+                            }
+                        }).fail((rep)=> {
+                            window.error(rep);
+                        });
+                    }else{
+                        this.addError='地址校验不通过，请重新输入';
+                        this.addverify=false;
+                        return
+                    }
                 }else{
                     window.error(rep.msg);
                 }
             }).fail((rep)=> {
                 window.error(rep);
             });
+
         },
         addBlur(){
+            this.addverify=false
+            this.addError="";
             if(!this.observeAddress){
-
+                this.addError="请输入观察地址";
             }else{//地址校验合法
+                if((window.url).indexOf('achain')>-1&&this.observeAddress.slice(0,3)!='ACT'
+                // ||(window.url).indexOf('ssc')>-1&&this.observeAddress.slice(0,3)!='SSC'
+                    ||(window.url).indexOf('ssc')>-1&&this.observeAddress.slice(0,3)!='YJC'){
+                    this.addError='地址校验不通过，请重新输入';
+                    return
+                }
                 commonService.addBlur({
-                    observeAddress:this.observeAddress
-                }).done((rep)=>{
+                    // observeAddress:this.observeAddress
+                },this.observeAddress).done((rep)=>{
                     if(rep.code=='200'){
-                        this.addverify=true
+                        if(rep.result){
+                            this.addverify=true
+                        }else{
+                         this.addError='地址校验不通过，请重新输入';
+                            this.addverify=false;
+                            return
+                        }
                     }else{
                         window.error(rep.msg);
                     }

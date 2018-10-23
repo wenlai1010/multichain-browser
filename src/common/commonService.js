@@ -23,8 +23,8 @@ export default {
      * @param param
      * @returns {*}
      */
-    addBlur(param = {}){
-        return ajax.post('/mailinfo.validateAddress?address=YJCBx8pZXiPcRfQMNruxkRWecYiKRafKEpua', param);
+    addBlur(param = {},address){
+        return ajax.post(`/mailinfo.validateAddress?address=${address}`, param);
     },
     /**
      * 开始观察---暗中观察
