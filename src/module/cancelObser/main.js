@@ -11,6 +11,7 @@ import tpl from './tpl.html';
 import commonService from '../../common/commonService';
 import Loading from '../../component/Loading.vue';
 import format from '../../common/format';
+import get from '../../util/get';
 
 Vue.prototype.$http= axios
 
@@ -87,7 +88,33 @@ export default Vue.extend({
             if(this.startFlag){
                 return;
             }
-            this.checkInput('tel');
+            this.telfocus = false;
+            let telt1 = new RegExp("^1[0-9]{10}$");
+            let telt2 = new RegExp("^[0-9]{5,15}$");
+            if(this.tel==""){
+                this.telError = true;
+                this.telErrText = '请输入手机号';
+                return
+            }
+            if($('.selected-flag .flag span').text().replace(/\s+/g, "") == "+86"){
+                if(!telt1.test(this.tel)){
+                    this.telErrText = '您输入的手机号格式有误';
+                    this.telError  = true;
+                    return
+                }else{
+                    this.telErrText = "";
+                    this.telError  = false;
+                }
+            }else{
+                if(!telt2.test(this.tel)){
+                    this.telErrText = '您输入的手机号格式有误';
+                    this.telError  = true;
+                    return
+                }else{
+                    this.telErrText="";
+                    this.telError  = false;
+                }
+            }
             this.startTimeInterval();
             this.$http.post("http://www.achainlabs.ak/udc/udc/authcode/send",{
                 tel:($('.selected-flag .flag span').text()+this.tel),
@@ -112,23 +139,64 @@ export default Vue.extend({
                 return false;
             }
             this.startFlag = true;
-            this.content = `${this.seconds}s`;
+            this.content = `${this.seconds}s后重新获取`;
             this.seconds--;
             setTimeout(this.startTimeInterval, 1000);
         },
         //取消观察
         cancelObser(){
-            this.checkInput('tel');
-            this.checkInput('code');
+            this.telfocus = false;
+            this.codefocus = false;
+            let telt1 = new RegExp("^1[0-9]{10}$");
+            let telt2 = new RegExp("^[0-9]{5,15}$");
+            if(this.tel==""){
+                this.telError = true;
+                this.telErrText = '请输入手机号';
+                return
+            }
+            if(this.code == ''){
+                this.codeError = true;
+                this.codeErrText = '请输入验证码';
+                return;
+            }
+            if($('.selected-flag .flag span').text().replace(/\s+/g, "") == "+86"){
+                if(!telt1.test(this.tel)){
+                    this.telErrText = '您输入的手机号格式有误';
+                    this.telError  = true;
+                    return
+                }else{
+                    this.telErrText = "";
+                    this.telError  = false;
+                }
+            }else{
+                if(!telt2.test(this.tel)){
+                    this.telErrText = '您输入的手机号格式有误';
+                    this.telError  = true;
+                    return
+                }else{
+                    this.telErrText="";
+                    this.telError  = false;
+                }
+            }
+            if(($('.selected-flag .flag span').text()+this.tel) == window.sessionStorage.getItem('lastTel') && (get.data.observeAddress ? get.data.observeAddress : '') == window.sessionStorage.getItem("lastAddr") && (get.data.mailAddress ? get.data.mailAddress : '') == window.sessionStorage.getItem("lastEmail")){
+                window.warning('请勿重复提交');
+            }
             commonService.cancelObser({
-                "id":"1",
-                "phoneNum":"+86 15201018126",
-                "verifyCode":"104341",
-                "observeAddress":"YJC7GaDZLapHZrmVn6z4pW8ViBPYNLgbjguL",
-                "nickName":"szh",
-                "mailAddress":"469041032@qq.com"
+                id:"",
+                phoneNum:($('.selected-flag .flag span').text()+this.tel),
+                verifyCode:this.code,
+                observeAddress:get.data.observeAddress ? get.data.observeAddress : '',
+                nickName:get.data.nickname ? get.data.nickname : '',
+                mailAddress:get.data.mailAddress ? get.data.mailAddress : ''
             }).done((rep)=>{
-            
+                if(rep.code == '200'){
+                    window.sessionStorage.setItem("lastAddr",get.data.observeAddress);
+                    window.sessionStorage.setItem('lastTel',($('.selected-flag .flag span').text()+this.tel));
+                    window.sessionStorage.setItem('lastEmail',get.data.mailAddress)
+                    window.success("取消成功");
+                }else{
+                    window.error(rep.msg);
+                }
             }).fail((rep)=> {
                 window.error(rep);
             });

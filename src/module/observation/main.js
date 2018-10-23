@@ -132,7 +132,7 @@ export default Vue.extend({
                     observeAddress:this.observeAddress,
                     nickName:this.nickName,
                     mailAddress:this.mailAddress,
-                    userId:getParam.data.userId
+                    userId:getParam.data.userId ? getParam.data.userId : ''
             }).done((rep)=>{
                 if(rep.code=='200'){
                     window.success("成功开始观察！请留意邮件哦～")
