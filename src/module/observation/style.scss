@@ -8,16 +8,9 @@
   background-size: 100% 100%;
   z-index: -1;
 }
-.head-img{
-  width: 90%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: -1;
-}
 .top-box{
-  max-width: 50%;
-  margin: 4% auto auto;
+  max-width: 840px;
+  margin: 134px auto auto;
   position: relative;
   >img:nth-child(1) {
     position: absolute;
@@ -118,7 +111,7 @@
 }
 .iptbox{
   max-width: 484px;
-  margin: 145px auto auto;
+  margin: 200px auto auto;
   position: relative;
   .areacode{
     top: -6px !important;
@@ -204,4 +197,15 @@
   margin-top: 6px;
   font-size: 16px;
   color: rgba(225, 0, 0, 1);
+}
+@media screen and (max-width:1500px) {
+  .top-box{
+    margin-top: 66px;
+  }
+  .topbg{
+    top: -110px;
+  }
+  .iptbox{
+    margin-top: 136px;
+  }
 }
