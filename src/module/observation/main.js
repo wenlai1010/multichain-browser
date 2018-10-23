@@ -134,8 +134,8 @@ export default Vue.extend({
                 this.mailError="请输入邮箱地址";
                 return
             }
-            if(this.contactEmail){
-                if(!new RegExp("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z0-9]{2,6}$").test(this.contactEmail)){
+            if(this.mailAddress){
+                if(!new RegExp("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z0-9]{2,6}$").test(this.mailAddress)){
                     this.mailError="邮箱格式有误，请重新输入";
                     return
                 }
