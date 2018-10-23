@@ -180,6 +180,7 @@ export default Vue.extend({
             }
             if(($('.selected-flag .flag span').text()+this.tel) == window.sessionStorage.getItem('lastTel') && (get.data.observeAddress ? get.data.observeAddress : '') == window.sessionStorage.getItem("lastAddr") && (get.data.mailAddress ? get.data.mailAddress : '') == window.sessionStorage.getItem("lastEmail")){
                 window.warning('请勿重复提交');
+                return;
             }
             commonService.cancelObser({
                 id:"",
