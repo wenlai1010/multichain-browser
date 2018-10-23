@@ -145,7 +145,7 @@ export default Vue.extend({
                 this.observeAddress===sessionStorage.getItem('observeAddress')&&
                 this.mailAddress===sessionStorage.getItem('mailAddress')
             ){
-                window.error('请勿重复提交');
+                window.warning('请勿重复提交');
                 return
             }
             // debugger
