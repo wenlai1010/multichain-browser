@@ -47,26 +47,30 @@
     <div class="iptbox">
         <div>
             <input id="mobile-number" :class="{'error':telError}" type="tel" maxlength="20" v-model="phoneNum" placeholder="手机号码">
-            <div class="redmsg">{{telError}}</div>
+
         </div>
+        <div class="redmsg">{{telError}}</div>
         <div class="code-box">
             <input type="tel" :class="{'error':codeError}" oninput="if(value.length>6)value=value.slice(0,6)" v-model="verifyCode" placeholder="验证码">
             <span v-if="!sendMsgDisabled" @click="getCode" class="getCode">获取验证码</span>
             <span v-if="sendMsgDisabled" class="getCode-after">{{time+'s后重新发送'}}</span>
-            <div class="redmsg">{{codeError}}</div>
+
         </div>
+        <div class="redmsg">{{codeError}}</div>
         <div class="addres-box">
             <input type="text" :class="{'error':addError}" v-model="observeAddress" @blur="addBlur" placeholder="你想观察的账户地址">
             <img v-if="addverify" class="correct-img" src="./img/xaunzhong@2x.png" alt="">
-            <div class="redmsg">{{addError}}</div>
+
         </div>
+        <div class="redmsg">{{addError}}</div>
         <div>
             <input type="text" v-model="nickName" placeholder="给这个观察账户地址起个昵称吧，方便记忆（非必填）">
         </div>
         <div>
             <input type="text" :class="{'error':mailError}" v-model="mailAddress" placeholder="接收提醒的邮箱地址">
-            <div class="redmsg">{{mailError}}</div>
+
         </div>
+        <div class="redmsg">{{mailError}}</div>
     <div class="openob-btn" @click="startob">
         开始观察
     </div>

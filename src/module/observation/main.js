@@ -5,7 +5,8 @@ import axios from 'axios'
 
 import './style.scss'
 import commonService from "../../common/commonService";
-Vue.prototype.$http= axios
+import getParam from '../../util/get'
+Vue.prototype.$http= axios;
 
 export default Vue.extend({
     name: 'observation',
@@ -130,7 +131,8 @@ export default Vue.extend({
                     verifyCode:this.verifyCode,
                     observeAddress:this.observeAddress,
                     nickName:this.nickName,
-                    mailAddress:this.mailAddress
+                    mailAddress:this.mailAddress,
+                    userId:getParam.data.userId
             }).done((rep)=>{
                 if(rep.code=='200'){
                     window.success("成功开始观察！请留意邮件哦～")
