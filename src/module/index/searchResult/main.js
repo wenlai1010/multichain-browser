@@ -8,6 +8,7 @@ import Loading from '../../../component/Loading.vue';
 import Pager from '../../../component/Pager.vue';
 import NoData from '../../../component/NoData.vue';
 import Transaction from '../../../component/AllTranList.vue';
+import Config from '../../../config/config';
 
 export default Vue.extend({
     template: tpl,
@@ -40,6 +41,11 @@ export default Vue.extend({
     },
     computed: {
         localUrl() {
+            if(this.$route.query.fromAddress.substr(0,3).indexOf("ACT") >= 0){
+                this.$store.commit('changeUrl',Config.baseUriAchain);
+            }else{
+                this.$store.commit('changeUrl',Config.baseUriSsc);
+            }
             window.url = this.$store.state.localUrl;
             return this.$store.state.localUrl;
         }
@@ -53,6 +59,13 @@ export default Vue.extend({
         this.fetchTradeInfo();
     },
     mounted(){
+        if(this.$route.query.fromAddress.substr(0,3).indexOf("ACT") >= 0){
+            $('.blockchain-nav').text(this.$t('achain'));
+            document.title = this.$t('siteTitleAchain');
+        }else{
+            document.title = this.$t('siteTitleSsc');
+            $('.blockchain-nav').text(this.$t('selfsell'));
+        }
         window.scrollTo(0, 0);
     },
     watch: {
