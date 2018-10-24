@@ -47,28 +47,28 @@
     <div class="iptbox">
         <div>
             <input id="mobile-number" :class="{'error':telError}" type="tel" maxlength="20" v-model="phoneNum" @blur="iptBlur('tel')" placeholder="手机号码">
-
         </div>
-        <div class="redmsg">{{telError}}</div>
+        <div :class="{'redmsg':telError}" class="un-err">{{telError}}</div>
+        <!--<div class="redmsg">{{telError}}</div>-->
         <div class="code-box">
             <input type="tel" :class="{'error':codeError}" @blur="iptBlur('code')" oninput="if(value.length>6)value=value.slice(0,6)" v-model="verifyCode" placeholder="验证码">
             <span v-if="!sendMsgDisabled" @click="getCode" class="getCode">获取验证码</span>
             <span v-if="sendMsgDisabled" class="getCode-after">{{time+'s后重新发送'}}</span>
         </div>
-        <div class="redmsg">{{codeError}}</div>
+        <div :class="{'redmsg':codeError}" class="un-err">{{codeError}}</div>
         <div class="addres-box">
             <input type="text" :class="{'error':addError}" v-model="observeAddress" @blur="iptBlur('add')" placeholder="你想观察的账户地址">
             <img v-if="addverify" class="correct-img" src="./img/xaunzhong@2x.png" alt="">
 
         </div>
-        <div class="redmsg">{{addError}}</div>
+        <div :class="{'redmsg':addError}" class="un-err">{{addError}}</div>
         <div>
             <input type="text" v-model="nickName" placeholder="给这个观察账户地址起个昵称吧，方便记忆（非必填）">
         </div>
         <div>
             <input type="text" :class="{'error':mailError}" @blur="iptBlur('mail')" v-model="mailAddress" placeholder="接收提醒的邮箱地址">
         </div>
-        <div class="redmsg">{{mailError}}</div>
+        <div :class="{'redmsg':mailError}" class="un-err">{{mailError}}</div>
     <div class="openob-btn" @click="startob">
         开始观察
     </div>
