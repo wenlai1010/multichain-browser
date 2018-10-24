@@ -155,19 +155,19 @@ body{
     color: #333;
   }
   input::-webkit-input-placeholder { /* WebKit browsers */
-    color: RGBA(200, 195, 204, 1);
+    //color: RGBA(200, 195, 204, 1);
     font-weight: 300;
   }
   input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: RGBA(200, 195, 204, 1);
+    //color: RGBA(200, 195, 204, 1);
     font-weight: 300;
   }
   input::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: RGBA(200, 195, 204, 1);
+    //color: RGBA(200, 195, 204, 1);
     font-weight: 300;
   }
   input:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: RGBA(200, 195, 204, 1);
+    //color: RGBA(200, 195, 204, 1);
     font-weight: 300;
   }
   //input::-webkit-input-placeholder {
