@@ -80,7 +80,7 @@ export default Vue.extend({
                         window.clearInterval(interval);
                     }
                 }, 1000);
-                this.$http.post("http://www.achainlabs.ak/udc/udc/authcode/send",{
+                this.$http.post("http://www.achainlabs.ak/udc/udc/authcode/sendPeep",{
                     tel:($('.selected-flag .flag span').text()+this.phoneNum)
                 },{
                     headers:{

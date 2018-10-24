@@ -39,7 +39,7 @@ html,body{
       margin-bottom: 50px;
     }
     &-item{
-      width:50%;
+      width:60%;
       height:48px;
       line-height: 48px;
       margin: 0 auto;
@@ -47,7 +47,7 @@ html,body{
       border-radius:8px;
       margin-top: 20px;
       &.textarea{
-        height: 100px;
+        height: 150px;
       }
       &-getcode{
         float: right;
@@ -70,6 +70,7 @@ html,body{
         outline: none;
         border: none;
         font-weight:300;
+        font-size: 16px;
         &.code{
           float: left;
           width:60%;
@@ -97,6 +98,7 @@ html,body{
         color: #333;
         font-weight:300;
         resize: none;
+        font-size: 16px;
         &:-ms-input-placeholder{
           color: #cccccc;
         }
@@ -138,7 +140,7 @@ html,body{
   }
 }
 .redmsg {
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
   text-align: left;
   line-height: 30px;

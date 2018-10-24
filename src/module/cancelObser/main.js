@@ -118,7 +118,7 @@ export default Vue.extend({
                 }
             }
             this.startTimeInterval();
-            this.$http.post("http://www.achainlabs.ak/udc/udc/authcode/send",{
+            this.$http.post("http://www.achainlabs.ak/udc/udc/authcode/sendPeep",{
                 tel:($('.selected-flag .flag span').text()+this.tel),
                 Locale:""
             },{
