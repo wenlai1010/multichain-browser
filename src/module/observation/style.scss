@@ -199,9 +199,10 @@
     line-height:64px;
     cursor:pointer;
     background-size: 200% auto !important;
-    transition: all 0.3s linear;
+    transition: all 0.1s linear;
     &:hover{
-      background-position: right center;
+      opacity: 0.7;
+      //background-position: right center;
     }
   }
 }
