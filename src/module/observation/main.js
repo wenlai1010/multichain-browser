@@ -230,7 +230,7 @@ export default Vue.extend({
                     if(!this.observeAddress){
                         this.addError="请输入观察地址";
                     }else{//地址校验合法
-                        if(this.observeAddress.slice(0,3)!='ACT'||this.observeAddress.slice(0,3)!='YJC'){
+                        if(this.observeAddress.slice(0,3)!='ACT'&&this.observeAddress.slice(0,3)!='YJC'){
                             // if(this.observeAddress.slice(0,3)!='ACT'||this.observeAddress.slice(0,3)!='SSC'){
                             this.addError='还没开通该链的监测哦，请期待哦！';
                             return
