@@ -209,3 +209,9 @@
     margin-top: 136px;
   }
 }
+input::-webkit-search-cancel-button{
+  display: none;
+}
+input::-ms-clear{
+  display: none;  //去掉IE下input 输入时后面的叉
+}
