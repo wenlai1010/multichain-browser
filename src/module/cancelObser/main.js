@@ -130,12 +130,14 @@ export default Vue.extend({
                 if(res.code != "0"){
                     this.content = '获取验证码';
                     this.startFlag = false;
+                    this.seconds = 60;
                     return
                 }
             });
         },
         startTimeInterval() {
             if (this.seconds <= 0) { //为0的时候还原
+                this.seconds = 60;
                 this.content = '获取验证码';
                 this.startFlag = false;
                 return false;
