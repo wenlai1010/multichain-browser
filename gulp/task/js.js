@@ -37,7 +37,7 @@ gulp.task('dep-min', ['dep:dev'], function () {
 gulp.task('js:prod', ['js:dev'], function () {
     return gulp
         .src('./build/**/*.js')
-        .pipe(replace('5260ca3470af412ea1dc9fd647903901b9adb4d618effec8f4f9479eaa0c9c69', '6a1cb528f6e797e58913bff7a45cdd4709be75114ccd1ccb0e611b808f4d1b75')) //测试链改正式链
+        .pipe(replace('http://www.achainlabs.ak/udc/udc/authcode/sendPeep', 'https://www.achainlabs.com/udc/udc/authcode/sendPeep')) //测试链改正式链
         .pipe(uglify())
         .pipe(md5(6, './prod/*.html'))
         .pipe(gulp.dest('./prod'));
