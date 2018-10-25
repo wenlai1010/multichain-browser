@@ -76,13 +76,16 @@ html,body{
           width:60%;
           margin-left: 5%;
         }
-        &:-ms-input-placeholder{
+        &::-webkit-input-placeholder { /* WebKit browsers */
           color: #cccccc;
         }
-        &:-webkit-input-placeholder{
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
           color: #cccccc;
         }
-        &:-moz-placeholder{
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          color: #cccccc;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
           color: #cccccc;
         }
       }
@@ -99,13 +102,16 @@ html,body{
         font-weight:300;
         resize: none;
         font-size: 16px;
-        &:-ms-input-placeholder{
+        &::-webkit-input-placeholder { /* WebKit browsers */
           color: #cccccc;
         }
-        &:-webkit-input-placeholder{
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
           color: #cccccc;
         }
-        &:-moz-placeholder{
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          color: #cccccc;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
           color: #cccccc;
         }
       }
