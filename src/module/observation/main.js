@@ -133,8 +133,8 @@ export default Vue.extend({
             }
             if(this.observeAddress.slice(0,3)=='ACT'){
                 window.url=config.baseUriAchain;
-            }else if(this.observeAddress.slice(0,3)=='YJC'){
-            // }else if(this.observeAddress.slice(0,3)=='SSC'){
+            // }else if(this.observeAddress.slice(0,3)=='YJC'){
+            }else if(this.observeAddress.slice(0,3)=='SSC'){
                 window.url=config.baseUriSsc;
             }else{
                 this.addError='还没开通该链的监测哦，请期待哦！';
@@ -233,8 +233,8 @@ export default Vue.extend({
                     }else{
                         if(this.observeAddress.slice(0,3)=='ACT'){
                             window.url=config.baseUriAchain;
-                        }else if(this.observeAddress.slice(0,3)=='YJC'){
-                            // }else if(this.observeAddress.slice(0,3)=='SSC'){
+                        // }else if(this.observeAddress.slice(0,3)=='YJC'){
+                            }else if(this.observeAddress.slice(0,3)=='SSC'){
                             window.url=config.baseUriSsc;
                         }else{
                             this.addError='还没开通该链的监测哦，请期待哦！';
