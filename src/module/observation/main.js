@@ -6,6 +6,7 @@ import axios from 'axios'
 import './style.scss'
 import commonService from "../../common/commonService";
 import getParam from '../../util/get'
+import config from '../../config/config'
 Vue.prototype.$http= axios;
 
 export default Vue.extend({
@@ -131,10 +132,10 @@ export default Vue.extend({
                 return
             }
             if(this.observeAddress.slice(0,3)=='ACT'){
-                window.url='http://172.16.20.20:8340/achain/api/browser';
+                window.url=config.baseUriAchain;
             }else if(this.observeAddress.slice(0,3)=='YJC'){
             // }else if(this.observeAddress.slice(0,3)=='SSC'){
-                window.url='http://172.16.20.20:8340/ssc/api/browser';
+                window.url=config.baseUriSsc;
             }else{
                 this.addError='还没开通该链的监测哦，请期待哦！';
                 return
@@ -229,9 +230,13 @@ export default Vue.extend({
                     this.addError="";
                     if(!this.observeAddress){
                         this.addError="请输入观察地址";
-                    }else{//地址校验合法
-                        if(this.observeAddress.slice(0,3)!='ACT'&&this.observeAddress.slice(0,3)!='YJC'){
-                            // if(this.observeAddress.slice(0,3)!='ACT'||this.observeAddress.slice(0,3)!='SSC'){
+                    }else{
+                        if(this.observeAddress.slice(0,3)=='ACT'){
+                            window.url=config.baseUriAchain;
+                        }else if(this.observeAddress.slice(0,3)=='YJC'){
+                            // }else if(this.observeAddress.slice(0,3)=='SSC'){
+                            window.url=config.baseUriSsc;
+                        }else{
                             this.addError='还没开通该链的监测哦，请期待哦！';
                             return
                         }
